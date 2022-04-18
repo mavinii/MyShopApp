@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "926760873493",
+    "project_id": "myshopapp-353bb",
+    "storage_bucket": "myshopapp-353bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926760873493:android:7cd22e9325381b7791681c",
+        "android_client_info": {
+          "package_name": "com.marcosoliveira.myshopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926760873493-icadmb1fvpu44kjrkp4vh21novokts5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYWFd2uAIzENc9Nlw0X8JWsdm7EaOkfXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926760873493-icadmb1fvpu44kjrkp4vh21novokts5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
