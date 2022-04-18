@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.marcosoliveira.myshopapp.R
@@ -31,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
             LogInuser()
         }
 
-        val signupbt = findViewById<Button>(R.id.signupbt)
+        val signupbt = findViewById<TextView>(R.id.signupbt)
         signupbt.setOnClickListener {
             val intent1= Intent(this, SignupActivity::class.java)
             startActivity(intent1)
