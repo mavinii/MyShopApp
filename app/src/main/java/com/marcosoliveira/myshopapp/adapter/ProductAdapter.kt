@@ -73,13 +73,9 @@ class ProductAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<Prod
 
             }
         }
-
-
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
-
-
 }

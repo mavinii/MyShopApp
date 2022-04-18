@@ -21,11 +21,11 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
 
     private val differcallback=object: DiffUtil.ItemCallback<Products>(){
         override fun areItemsTheSame(oldItem: Products, newItem: Products): Boolean {
-            return oldItem.id==newItem.id
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Products, newItem: Products): Boolean {
-            return oldItem==newItem
+            return oldItem == newItem
         }
     }
 
@@ -50,26 +50,26 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
             Glide.with(this).load(product.image).into(ivArtImage)
             tvPrice.text=product.price.toString()
             tvTitle.text=product.title
-            tvCurrentAmount.text=product.amt
+            tvCurrentAmount.text = product.amt
 
             val btAdd = findViewById<ImageButton>(R.id.btAdd)
             btAdd.setOnClickListener {
-                var amount=tvCurrentAmount.text.toString().toInt()
+                var amount = tvCurrentAmount.text.toString().toInt()
                 amount++
-                product.amt=amount.toString()
+                product.amt = amount.toString()
                 viewModel.upsert(product)
-                tvCurrentAmount.text=amount.toString()
+                tvCurrentAmount.text = amount.toString()
                 viewModel.increase(product.price!!.toBigDecimal())
             }
 
             val btRemove = findViewById<ImageButton>(R.id.btRemove)
             btRemove.setOnClickListener {
-                var amount=tvCurrentAmount.text.toString().toInt()
-                if(amount>0){
+                var amount = tvCurrentAmount.text.toString().toInt()
+                if(amount > 0){
                     amount--
-                    product.amt=amount.toString()
+                    product.amt = amount.toString()
                     viewModel.upsert(product)
-                    tvCurrentAmount.text=amount.toString()
+                    tvCurrentAmount.text = amount.toString()
                     viewModel.decrease(product.price!!.toBigDecimal())
                 }
                 else{

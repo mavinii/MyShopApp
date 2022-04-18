@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/activity_checkout.xml" value="0.2558876811594203" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/activity_main.xml" value="0.2558876811594203" />
-        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/cart_view.xml" value="0.2558876811594203" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/cart_view.xml" value="0.25" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_authentication.xml" value="0.2269021739130435" />
-        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_product.xml" value="0.1697061803444782" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_cart.xml" value="0.67" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_product.xml" value="0.4135546334716459" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_signup.xml" value="0.2558876811594203" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/productview.xml" value="0.2558876811594203" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/menu/app_menu.xml" value="0.22" />
       </map>
     </option>
