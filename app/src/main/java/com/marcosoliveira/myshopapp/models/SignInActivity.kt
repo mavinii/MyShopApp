@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
+// 22931 - Marcos Oliveira
 class SignInActivity : AppCompatActivity() {
 
     lateinit var  auth: FirebaseAuth
@@ -25,7 +26,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_authentication)
 
-        auth= FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
 
         val signInbt = findViewById<Button>(R.id.signInbt)
         signInbt.setOnClickListener {

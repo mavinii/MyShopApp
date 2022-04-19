@@ -44,16 +44,16 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         btpay.setOnClickListener {
 
             val amount = view.findViewById<TextView>(R.id.tvTotalPrice).text.toString().toBigDecimal()
-            val check= BigDecimal.valueOf(0.0)
+            val check = BigDecimal.valueOf(0.0)
 
-            if(amount==check){
-                Toast.makeText(context,"The Cost is 0", Toast.LENGTH_SHORT).show()
+            if(amount == check){
+                Toast.makeText(context,"Your cart is empty", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val amt=amount.toString().toDouble()
+            val amt = amount.toString().toDouble()
 
-            val newamt=amt.times(100).toInt().toString()
+            val newamt = amt.times(100).toInt().toString()
 
 
             /*Toast.makeText(context,"The Amount is $newamt",Toast.LENGTH_LONG).show()*/
@@ -61,15 +61,12 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
             /*initiatePayment()*/
 
             navigate(newamt)
-
-
-
         }
 
     }
 
     private fun navigate(newamt:String) {
-        val intent = Intent(context, CheckoutActivity::class.java)
+        val intent = Intent(context, SignInActivity::class.java)
         intent.putExtra("AMOUNT",newamt)
         startActivity(intent)
     }
