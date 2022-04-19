@@ -45,27 +45,50 @@
                 android:id="@+id/categorytv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="TextView"
-                android:textSize="15sp"
-                android:paddingBottom="10dp" />
+                android:textSize="15sp" />
 
-            <!-- Price -->
-            <TextView
-                android:id="@+id/pricetv"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textSize="15sp"/>
+                android:orientation="horizontal">
+
+                <!-- Euro -->
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="€"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <!-- Price -->
+                <TextView
+                    android:id="@+id/pricetv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textSize="15sp"/>
+            </LinearLayout>
 
             <!-- Btn add to cart -->
-            <Button
-                android:id="@+id/addtocartbt"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_marginTop="10dp"
-                android:text="ADD TO CART" />
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/addtocartbt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="ADD TO CART"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -39,16 +39,38 @@
                 android:textStyle="bold"
                 android:text="TextView"/>
 
-            <!-- Price -->
-            <TextView
-                android:id="@+id/tvPrice"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="TextView"/>
+                android:orientation="horizontal">
+
+                <!-- Euro -->
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="€"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <!-- Price -->
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="TextView"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+
 
             <!-- Description -->
             <TextView
+                android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -89,12 +111,19 @@
                 android:layout_marginStart="10dp" />
 
             <!-- Delete item button -->
-            <ImageButton
-                android:id="@+id/btDelete"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="205dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="155dp"
-                app:srcCompat="@drawable/ic_delete" />
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    app:srcCompat="@drawable/ic_delete" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

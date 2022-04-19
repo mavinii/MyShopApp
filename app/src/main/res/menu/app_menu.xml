@@ -8,5 +8,4 @@
         android:id="@+id/btlogOut"
         android:icon="@drawable/ic_logout"
         app:showAsAction="always" />
-
 </menu>

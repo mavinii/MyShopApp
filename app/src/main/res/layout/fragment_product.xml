@@ -30,7 +30,6 @@
         style="?attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/rvProduct"
         app:layout_constraintEnd_toEndOf="parent"

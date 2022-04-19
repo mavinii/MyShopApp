@@ -38,18 +38,20 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
     }
 
     override fun onBindViewHolder(holder: Cartviewholder, position: Int) {
-        val product=differ.currentList[position]
+        val product = differ.currentList[position]
 
         holder.itemView.apply {
 
             val ivArtImage = findViewById<ImageView>(R.id.ivArtImage)
             val tvPrice = findViewById<TextView>(R.id.tvPrice)
             val tvTitle = findViewById<TextView>(R.id.tvTitle)
+            val tvDescription = findViewById<TextView>(R.id.tvDescription)
             val tvCurrentAmount = findViewById<TextView>(R.id.tvCurrentAmount)
 
             Glide.with(this).load(product.image).into(ivArtImage)
-            tvPrice.text=product.price.toString()
-            tvTitle.text=product.title
+            tvPrice.text = product.price.toString()
+            tvTitle.text = product.title
+            tvDescription.text = product.description
             tvCurrentAmount.text = product.amt
 
             val btAdd = findViewById<ImageButton>(R.id.btAdd)
@@ -80,7 +82,7 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
             val btDelete = findViewById<ImageButton>(R.id.btDelete)
             btDelete.setOnClickListener {
                 val amount=tvCurrentAmount.text.toString().toInt()
-                viewModel.deletePrice(amount,product.price!!)
+                viewModel.deletePrice(amount, product.price!!)
                 viewModel.delete(product)
             }
         }

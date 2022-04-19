@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcosoliveira.myshopapp.R
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.adapter.CartAdapter
 import com.marcosoliveira.myshopapp.architecture.ProductViewModel
 import java.math.BigDecimal
@@ -23,7 +24,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel=(activity as MainActivity).viewModel
+        viewModel = (activity as MainActivity).viewModel
 
         setRecyclerview()
 
@@ -52,9 +53,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
             }
 
             val amt = amount.toString().toDouble()
-
             val newamt = amt.times(100).toInt().toString()
-
 
             /*Toast.makeText(context,"The Amount is $newamt",Toast.LENGTH_LONG).show()*/
 
@@ -65,10 +64,25 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
     }
 
-    private fun navigate(newamt:String) {
-        val intent = Intent(context, SignInActivity::class.java)
-        intent.putExtra("AMOUNT",newamt)
-        startActivity(intent)
+    // If user IS already signed in, go to CheckoutActivity
+    // if NOT, go to sign in page
+    private fun navigate(newamt: String) {
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+
+        if(currentUser != null){
+
+            // Redirect the user to the CheckoutActivity Screen
+            val intent = Intent(context, CheckoutActivity::class.java)
+            startActivity(intent)
+        } else {
+
+            // if user is not signed in, go to sing in page
+            val intent = Intent(context, SignInActivity::class.java)
+            intent.putExtra("AMOUNT",newamt)
+            startActivity(intent)
+        }
+
     }
 
     /* private fun Getorderid(amt:Int) {
@@ -133,13 +147,10 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
     private fun setRecyclerview(){
 
-        cartadapter= CartAdapter(viewModel)
-
-//        val rvCart = view?.findViewById<RecyclerView>(R.id.rvCart)
-//        CHECK THIS LATER ON
+        cartadapter = CartAdapter(viewModel)
 
         view?.findViewById<RecyclerView>(R.id.rvCart)?.apply{
-            adapter=cartadapter
+            adapter = cartadapter
             layoutManager= LinearLayoutManager(context)
         }
     }

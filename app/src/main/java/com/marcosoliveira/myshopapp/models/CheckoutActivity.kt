@@ -11,9 +11,6 @@ import org.json.JSONObject
 
 class CheckoutActivity : AppCompatActivity(), PaymentResultListener {
 
-    // val TAG:String = com.example.foodordering.Models.CheckoutActivity::class.toString()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

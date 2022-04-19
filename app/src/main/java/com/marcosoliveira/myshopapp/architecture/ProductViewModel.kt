@@ -25,19 +25,19 @@ class ProductViewModel(
 
     init{
         viewModelScope.launch {
-            val list=allproducts().await()
+            val list = allproducts().await()
             if(list.isNotEmpty()){
-                var ans: BigDecimal =0.toBigDecimal()
+                var ans: BigDecimal = 0.toBigDecimal()
                 for(i in list){
-                    val a1=i.amt?.toInt()!!
-                    val a2=i.price!!
-                    val adder=(a1*a2).toBigDecimal()
-                    ans=ans.plus(adder)
+                    val a1 = i.amt?.toInt()!!
+                    val a2 = i.price!!
+                    val adder = (a1 * a2).toBigDecimal()
+                    ans = ans.plus(adder)
                 }
                 price.value=ans
             }
             else{
-                price.value= BigDecimal.valueOf(0.0)
+                price.value = BigDecimal.valueOf(0.0)
             }
         }
         getProducts()
