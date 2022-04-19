@@ -54,7 +54,7 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
             tvDescription.text = product.description
             tvCurrentAmount.text = product.amt
 
-            val btAdd = findViewById<ImageButton>(R.id.btAdd)
+            val btAdd = findViewById<ImageView>(R.id.btAdd)
             btAdd.setOnClickListener {
                 var amount = tvCurrentAmount.text.toString().toInt()
                 amount++
@@ -64,7 +64,7 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
                 viewModel.increase(product.price!!.toBigDecimal())
             }
 
-            val btRemove = findViewById<ImageButton>(R.id.btRemove)
+            val btRemove = findViewById<ImageView>(R.id.btRemove)
             btRemove.setOnClickListener {
                 var amount = tvCurrentAmount.text.toString().toInt()
                 if(amount > 0){
@@ -79,9 +79,9 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
                 }
             }
 
-            val btDelete = findViewById<ImageButton>(R.id.btDelete)
+            val btDelete = findViewById<ImageView>(R.id.btDelete)
             btDelete.setOnClickListener {
-                val amount=tvCurrentAmount.text.toString().toInt()
+                val amount = tvCurrentAmount.text.toString().toInt()
                 viewModel.deletePrice(amount, product.price!!)
                 viewModel.delete(product)
             }
