@@ -21,7 +21,6 @@ class FirestoreClass {
     // This function register an user, from the RegisterActivity
     fun registerUser(activity: SignupActivity, userInfo: User){
         mFirestore.collection(Constants.USER)
-
             .document(userInfo.id)                  // It gets the id from "User" activity
             .set(userInfo, SetOptions.merge())      // It merges the both information
             .addOnFailureListener {

@@ -125,6 +125,7 @@ open class SignupActivity : AppCompatActivity() {
 
                         // it calls my class FirestoreClass and calls the registerUser
                         FirestoreClass().registerUser(this@SignupActivity, user)
+                        userRegistrationSuccess()
 
                     } else {
                         //It show a message in case something goes wrong
@@ -135,7 +136,7 @@ open class SignupActivity : AppCompatActivity() {
     }
 
     fun userRegistrationSuccess(){
-        Toast.makeText(this@SignupActivity, "You are registered successfully", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@SignupActivity, "You are registered successfully!", Toast.LENGTH_SHORT).show()
         val intent = Intent(this@SignupActivity, SignInActivity::class.java)
         startActivity(intent)
 

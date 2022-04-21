@@ -13,11 +13,11 @@ class ProductViewModel(
     val ProductsRepository:ProductRepository
 ): ViewModel() {
 
-    val Getproducts: MutableLiveData<Resource<List<Products>>> = MutableLiveData()
+    val Getproducts:MutableLiveData<Resource<List<Products>>> = MutableLiveData()
 
-    val price: MutableLiveData<BigDecimal> = MutableLiveData()
+    val price:MutableLiveData<BigDecimal> = MutableLiveData()
 
-    val SearchProducts: MutableLiveData<Resource<List<Products>>> = MutableLiveData()
+    val SearchProducts:MutableLiveData<Resource<List<Products>>> = MutableLiveData()
 
 /*  val getorderid:MutableLiveData<Resource<Order>> = MutableLiveData()
 
@@ -25,34 +25,34 @@ class ProductViewModel(
 
     init{
         viewModelScope.launch {
-            val list = allproducts().await()
+            val list=allproducts().await()
             if(list.isNotEmpty()){
-                var ans: BigDecimal = 0.toBigDecimal()
+                var ans:BigDecimal=0.toBigDecimal()
                 for(i in list){
-                    val a1 = i.amt?.toInt()!!
-                    val a2 = i.price!!
-                    val adder = (a1 * a2).toBigDecimal()
-                    ans = ans.plus(adder)
+                    val a1=i.amt?.toInt()!!
+                    val a2=i.price!!
+                    val adder=(a1*a2).toBigDecimal()
+                    ans=ans.plus(adder)
                 }
                 price.value=ans
             }
             else{
-                price.value = BigDecimal.valueOf(0.0)
+                price.value= BigDecimal.valueOf(0.0)
             }
         }
         getProducts()
     }
 
-    fun increase(Newprice: BigDecimal){
+    fun increase(Newprice:BigDecimal){
         price.value = price.value?.plus(Newprice)
     }
 
-    fun decrease(Newprice: BigDecimal){
+    fun decrease(Newprice:BigDecimal){
         price.value=price.value?.minus(Newprice)
     }
 
     fun deletePrice(Amount:Int,Newprice:Double){
-        val DeletePrice: BigDecimal =(Newprice*Amount).toBigDecimal()
+        val DeletePrice:BigDecimal=(Newprice*Amount).toBigDecimal()
         price.value=price.value?.minus(DeletePrice)
     }
 
