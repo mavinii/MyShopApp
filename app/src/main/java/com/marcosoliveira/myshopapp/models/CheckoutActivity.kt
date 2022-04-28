@@ -1,94 +1,79 @@
 package com.marcosoliveira.myshopapp.models
 
-import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import com.marcosoliveira.myshopapp.R
-import kotlinx.android.synthetic.main.activity_checkout.*
-import org.json.JSONObject
 
-class CheckoutActivity : AppCompatActivity(), PaymentResultListener {
-
+class CheckoutActivity : AppCompatActivity() {
+                                            // , PaymentResultListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-//        Checkout.preload(applicationContext)
-
-
-//        val amt=intent.getStringExtra("AMOUNT")
-
 
         val btclickme = findViewById<Button>(R.id.btclickme)
-
         btclickme.setOnClickListener {
-
-            val phoneNo = findViewById<TextView>(R.id.etPhone).text.toString()
-            val address = findViewById<TextView>(R.id.etAddress).text.toString()
-            val city = findViewById<TextView>(R.id.etCity).text.toString()
-            val state = findViewById<TextView>(R.id.etState).text.toString()
-            val zipCode = findViewById<TextView>(R.id.etZipCode).text.toString()
-
-//            if(name.isNotEmpty() && email.isNotEmpty() && phoneNo.isNotEmpty() && address.isNotEmpty() ){
-//                startPayment(name,amt!!)
-//            }
-//            else if(name.isEmpty()){
-//                Toast.makeText(this,"Please enter name", Toast.LENGTH_LONG).show()
-//            }
-            if(phoneNo.isEmpty()){
-                Toast.makeText(this,"Please enter phone number", Toast.LENGTH_LONG).show()
-            }
-            else if (address.isEmpty()){
-                Toast.makeText(this,"Please enter email", Toast.LENGTH_LONG).show()
-            }
-//            else if(address.isEmpty()){
-//                Toast.makeText(this,"Please enter Address", Toast.LENGTH_LONG).show()
-//            }
+            validatePaymentDetails()
         }
     }
 
-    private fun startPayment(name:String,amt:String){
+    // It checks if all inputs are valid before finalizing the payment
+    private fun validatePaymentDetails(): Boolean{
+        val phoneNo = findViewById<TextView>(R.id.etPhone)
+        val address = findViewById<TextView>(R.id.etAddress)
+        val city = findViewById<TextView>(R.id.etCity)
+        val state = findViewById<TextView>(R.id.etState)
+        val zipCode = findViewById<TextView>(R.id.etZipCode)
 
+        // It checks if all condition is valid
+        return when {
+            TextUtils.isEmpty(phoneNo.text.toString().trim() {it <= ' '}) -> {
+                Snackbar.make(phoneNo, "PHONE can not be empty!", Snackbar.LENGTH_LONG).show()
+                false
+            }
+            TextUtils.isEmpty(address.text.toString().trim() {it <= ' '}) -> {
+                Snackbar.make(address, "ADDRESS can not be empty!", Snackbar.LENGTH_LONG).show()
+                false
+            }
+            TextUtils.isEmpty(city.text.toString().trim() {it <= ' '}) -> {
+                Snackbar.make(city, "CITY can not be empty!", Snackbar.LENGTH_LONG).show()
+                false
+            }
+            TextUtils.isEmpty(state.text.toString().trim() {it <= ' '}) -> {
+                Snackbar.make(state, "STATE can not be empty!", Snackbar.LENGTH_LONG).show()
+                false
+            }
+            TextUtils.isEmpty(zipCode.text.toString().trim() {it <= ' '}) -> {
+                Snackbar.make(zipCode, "ZIP can not be empty!", Snackbar.LENGTH_LONG).show()
+                false
+            }
 
-//        val co = Checkout()
+            else -> {
+                orderCompletedWithSuccess()
+//                make(etLastName, "Order completed!", Snackbar.LENGTH_LONG).show()
+                true
+            }
 
-//        co.setKeyID("rzp_test_sQu2tYSlwixU8B")
-
-        val activity: Activity = this
-
-        try {
-            val options = JSONObject()
-            options.put("name",name)
-            options.put("description","Payement Gateway")
-            //You can omit the image option to fetch the image from dashboard
-            //options.put("image","https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
-            // options.put("theme.color", "#3399cc")
-            options.put("currency","INR")
-            // options.put("order_id", "order_DBJOWzybf0sJbb")
-            options.put("amount",amt)//pass amount in currency subunits
-
-            val prefill = JSONObject()
-            prefill.put("email","ashutosh1199@gmail.com")
-            prefill.put("contact","9354758358")
-
-            options.put("prefill",prefill)
-//            co.open(activity,options)
-        } catch (e: Exception){
-            Toast.makeText(activity,"Error in payment: "+ e.message, Toast.LENGTH_LONG).show()
-            e.printStackTrace()
         }
+
     }
 
-    override fun onPaymentSuccess(p0: String?){
-        Toast.makeText(this,"Payment Success your order will be delivered to address mentioned",
-            Toast.LENGTH_LONG).show()
+    // Order completed
+    fun orderCompletedWithSuccess(){
+        Toast.makeText(this@CheckoutActivity, "Order completed successfully!", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@CheckoutActivity, MainActivity::class.java)
+        startActivity(intent)
+
+        // It takes the user to the login page and close the register screen
+        finish()
     }
 
-    override fun onPaymentError(p0: Int, p1: String?) {
-        Toast.makeText(this,"Payment Failure due to $p1", Toast.LENGTH_LONG).show()
-    }
+
 }
