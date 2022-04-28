@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyShopApp">
-        <activity android:name="com.marcosoliveira.myshopapp.models.CheckoutActivity"/>
+        <activity
+            android:name="com.marcosoliveira.myshopapp.models.CheckoutActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name="com.marcosoliveira.myshopapp.models.SignupActivity" />
         <activity android:name="com.marcosoliveira.myshopapp.models.SignInActivity" />
         <activity android:name="com.marcosoliveira.myshopapp.models.MainActivity" >
@@ -22,9 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
     </application>
 
 </manifest>

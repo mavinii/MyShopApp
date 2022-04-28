@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.marcosoliveira.myshopapp.R
+import kotlinx.android.synthetic.main.activity_checkout.*
 import org.json.JSONObject
 
 class CheckoutActivity : AppCompatActivity(), PaymentResultListener {
@@ -19,33 +20,34 @@ class CheckoutActivity : AppCompatActivity(), PaymentResultListener {
 //        Checkout.preload(applicationContext)
 
 
-        val amt=intent.getStringExtra("AMOUNT")
+//        val amt=intent.getStringExtra("AMOUNT")
 
 
         val btclickme = findViewById<Button>(R.id.btclickme)
 
         btclickme.setOnClickListener {
 
-            val name = findViewById<TextView>(R.id.etName).text.toString()
-            val email = findViewById<TextView>(R.id.etEmail).text.toString()
             val phoneNo = findViewById<TextView>(R.id.etPhone).text.toString()
             val address = findViewById<TextView>(R.id.etAddress).text.toString()
+            val city = findViewById<TextView>(R.id.etCity).text.toString()
+            val state = findViewById<TextView>(R.id.etState).text.toString()
+            val zipCode = findViewById<TextView>(R.id.etZipCode).text.toString()
 
-            if(name.isNotEmpty() && email.isNotEmpty() && phoneNo.isNotEmpty() && address.isNotEmpty() ){
-                startPayment(name,amt!!)
-            }
-            else if(name.isEmpty()){
-                Toast.makeText(this,"Please enter name", Toast.LENGTH_LONG).show()
-            }
-            else if(phoneNo.isEmpty()){
+//            if(name.isNotEmpty() && email.isNotEmpty() && phoneNo.isNotEmpty() && address.isNotEmpty() ){
+//                startPayment(name,amt!!)
+//            }
+//            else if(name.isEmpty()){
+//                Toast.makeText(this,"Please enter name", Toast.LENGTH_LONG).show()
+//            }
+            if(phoneNo.isEmpty()){
                 Toast.makeText(this,"Please enter phone number", Toast.LENGTH_LONG).show()
             }
-            else if(email.isEmpty()){
+            else if (address.isEmpty()){
                 Toast.makeText(this,"Please enter email", Toast.LENGTH_LONG).show()
             }
-            else if(address.isEmpty()){
-                Toast.makeText(this,"Please enter Address", Toast.LENGTH_LONG).show()
-            }
+//            else if(address.isEmpty()){
+//                Toast.makeText(this,"Please enter Address", Toast.LENGTH_LONG).show()
+//            }
         }
     }
 
@@ -75,7 +77,7 @@ class CheckoutActivity : AppCompatActivity(), PaymentResultListener {
 
             options.put("prefill",prefill)
 //            co.open(activity,options)
-        }catch (e: Exception){
+        } catch (e: Exception){
             Toast.makeText(activity,"Error in payment: "+ e.message, Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
@@ -88,8 +90,5 @@ class CheckoutActivity : AppCompatActivity(), PaymentResultListener {
 
     override fun onPaymentError(p0: Int, p1: String?) {
         Toast.makeText(this,"Payment Failure due to $p1", Toast.LENGTH_LONG).show()
-
     }
-
-
 }

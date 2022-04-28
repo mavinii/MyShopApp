@@ -51,7 +51,7 @@
 
 ## References:
 - https://stackoverflow.com
-- Firebase connection: https://www.youtube.com/watch?v=xu3bHQWD6A0
+- Firebase connection: https://www.youtube.com
 - Retrofit Documentation: https://square.github.io/retrofit
 - MohammadReza Keikavousi: https://fakestoreapi.com
 - Fakestore implementation: https://github.com/ashutosh1199

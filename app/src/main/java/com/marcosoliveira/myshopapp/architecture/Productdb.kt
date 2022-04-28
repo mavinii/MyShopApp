@@ -18,8 +18,6 @@ abstract class Productdb: RoomDatabase() {
 
     abstract fun getArticleDao(): ProductDAO
 
-
-
     companion object {
         @Volatile
         private var instance: Productdb? = null
