@@ -34,9 +34,8 @@ class CheckoutActivity : AppCompatActivity() {
         val btnPayNow = findViewById<Button>(R.id.btn_pay_now)
         btnPayNow.setOnClickListener {
             savingUserPaymentDetails()
-
         }
-        // install Trigger email extension? to send email once paid? youtube?
+        // FCM Firebase Cloud Message
     }
 
     // It checks if all inputs are valid before finalizing the payment
@@ -51,26 +50,25 @@ class CheckoutActivity : AppCompatActivity() {
         // It checks if all condition is valid
         return when {
             TextUtils.isEmpty(phoneNo.text.toString().trim() {it <= ' '}) -> {
-                Snackbar.make(phoneNo, "PHONE can not be empty!", Snackbar.LENGTH_LONG).show()
+                Toast.makeText(this, "PHONE can not be empty!", Toast.LENGTH_LONG).show()
                 false
             }
             TextUtils.isEmpty(address.text.toString().trim() {it <= ' '}) -> {
-                Snackbar.make(address, "ADDRESS can not be empty!", Snackbar.LENGTH_LONG).show()
+                Toast.makeText(this, "ADDRESS can not be empty!", Toast.LENGTH_LONG).show()
                 false
             }
             TextUtils.isEmpty(city.text.toString().trim() {it <= ' '}) -> {
-                Snackbar.make(city, "CITY can not be empty!", Snackbar.LENGTH_LONG).show()
+                Toast.makeText(this, "CITY can not be empty!", Toast.LENGTH_LONG).show()
                 false
             }
             TextUtils.isEmpty(state.text.toString().trim() {it <= ' '}) -> {
-                Snackbar.make(state, "STATE can not be empty!", Snackbar.LENGTH_LONG).show()
+                Toast.makeText(this, "STATE can not be empty!", Toast.LENGTH_LONG).show()
                 false
             }
             TextUtils.isEmpty(zipCode.text.toString().trim() {it <= ' '}) -> {
-                Snackbar.make(zipCode, "ZIP can not be empty!", Snackbar.LENGTH_LONG).show()
+                Toast.makeText(this, "ZIP can not be empty!", Toast.LENGTH_LONG).show()
                 false
             }
-
             else -> {
 //                orderCompletedWithSuccess()
 //                make(etLastName, "Order completed!", Snackbar.LENGTH_LONG).show()
@@ -114,6 +112,8 @@ class CheckoutActivity : AppCompatActivity() {
 
     // Order completed
     fun orderCompletedWithSuccess(){
+
+        // TODO Send the user their profile after payment
         Toast.makeText(this@CheckoutActivity, "Order completed! Please check your E-mail.", Toast.LENGTH_SHORT).show()
         val intent = Intent(this@CheckoutActivity, MainActivity::class.java)
         startActivity(intent)
