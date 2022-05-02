@@ -19,9 +19,9 @@
 - [x] On clicking a Product, show Product description, show buy button and controls to change quantity.
 
 3 - Cart:
-- [ ] Show cart summary
-- [ ] Show total amount
-- [ ] Purchase button to place an order, show order notification
+- [x] Show cart summary
+- [x] Show total amount
+- [x] Purchase button to place an order, show order notification
 
 4 - Show order history:
 - [ ] List users orders
@@ -58,6 +58,7 @@
 - Bottom Nav View: https://www.youtube.com/watch?v=Chso6xrJ6aU
 - Communicating with fragments: https://developer.android.com/guide/fragments/communicate#kotlin
 - Login page, splash page and others functions: https://www.youtube.com/watch?v=hoK9OOP1KZw&t=396s
+- FCM Firebase Cloud Message: https://firebase.google.com/docs/cloud-messaging/android/client
 
 ## Copyright Disclaimer:
 Please note that this app project is part of Dorset College's sophomore semester final project, however, it may contain some part of code that may be copyrighted, if so, please contact me so I can delete or give due to copyright. All the people were duly referenced in the "References" section above.
