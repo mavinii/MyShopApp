@@ -25,23 +25,15 @@ import com.marcosoliveira.myshopapp.util.Constants
 class CheckoutActivity : AppCompatActivity() {
 
     lateinit var auth: FirebaseAuth
-//    lateinit var user: User
-    lateinit var databaseReference: DatabaseReference
-    private val mFirestore = FirebaseFirestore.getInstance()
     var db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        auth = FirebaseAuth.getInstance()
-        val uid = auth.currentUser?.uid
-        databaseReference = FirebaseDatabase.getInstance().getReference("user")
-
         val btnPayNow = findViewById<Button>(R.id.btn_pay_now)
         btnPayNow.setOnClickListener {
             savingUserPaymentDetails()
-            orderCompletedWithSuccess()
 
         }
         // install Trigger email extension? to send email once paid? youtube?
@@ -93,29 +85,30 @@ class CheckoutActivity : AppCompatActivity() {
     // SHOWING USERNAME: https://www.youtube.com/watch?v=5UEdyUFi_uQ
     fun savingUserPaymentDetails() {
 
-//        if (validatePaymentDetails()){
-//
-//        }
+        if (validatePaymentDetails()){
 
-        // getting all the user details to be saved on database
-        val phoneNo = findViewById<TextView>(R.id.etPhone).text.toString().trim { it <= ' '}
-        val address = findViewById<TextView>(R.id.etAddress).text.toString().trim { it <= ' '}
-        val city = findViewById<TextView>(R.id.etCity).text.toString().trim { it <= ' '}
-        val state = findViewById<TextView>(R.id.etState).text.toString().trim { it <= ' '}
-        val zipCode = findViewById<TextView>(R.id.etZipCode).text.toString().trim { it <= ' '}
+            // getting all the user details to be saved on database
+            val phoneNo = findViewById<TextView>(R.id.etPhone).text.toString().trim { it <= ' '}
+            val address = findViewById<TextView>(R.id.etAddress).text.toString().trim { it <= ' '}
+            val city = findViewById<TextView>(R.id.etCity).text.toString().trim { it <= ' '}
+            val state = findViewById<TextView>(R.id.etState).text.toString().trim { it <= ' '}
+            val zipCode = findViewById<TextView>(R.id.etZipCode).text.toString().trim { it <= ' '}
 
-        // it sends users details to database
-        val data = hashMapOf(
-            "phoneNo" to phoneNo,
-            "address" to address,
-            "city" to city,
-            "state" to state,
-            "zipCode" to zipCode
-        )
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        db.collection("user").document(currentUser.uid)
-            .set(data, SetOptions.merge())
-
+            // it sends the user details to database associated his ID
+            val data = hashMapOf(
+                "phone" to phoneNo,
+                "address" to address,
+                "city" to city,
+                "state" to state,
+                "zipCode" to zipCode
+            )
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser != null) {
+                db.collection("user").document(currentUser.uid)
+                    .set(data, SetOptions.merge())
+            }
+            orderCompletedWithSuccess()
+        }
 
     }
 

@@ -9,5 +9,5 @@ data class User (
     val address: String? = null,
     val city: String? = null,
     val state: String? = null,
-    val zip: String? = null
+    val zipCode: String? = null
 )

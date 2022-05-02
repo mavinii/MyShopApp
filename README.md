@@ -51,7 +51,7 @@
 
 ## References:
 - https://stackoverflow.com
-- Firebase connection: https://www.youtube.com
+- Firebase database: https://firebase.google.com/docs/auth/android/start
 - Retrofit Documentation: https://square.github.io/retrofit
 - MohammadReza Keikavousi: https://fakestoreapi.com
 - Fakestore implementation: https://github.com/ashutosh1199
