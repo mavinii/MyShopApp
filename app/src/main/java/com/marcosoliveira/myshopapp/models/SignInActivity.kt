@@ -48,9 +48,9 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
     fun userLoggedInSuccess(user: User){
 
         // it prints the user details
-        Log.i("First Name: ", user.firstName)
-        Log.i("Last Name: ", user.lastName)
-        Log.i("Email: ", user.email)
+//        Log.i("First Name: ", user.firstName)
+//        Log.i("Last Name: ", user.lastName)
+//        Log.i("Email: ", user.email)
 
         // Redirect the user to the Main Screen after log in
         startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
@@ -62,7 +62,7 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
             when (view.id){
 
                 R.id.tv_forgot_password -> {
-                    Toast.makeText(this, "Forgot password is not working yet", Toast.LENGTH_LONG).show()
+                    makeText(this, "Forgot password is not working yet", Toast.LENGTH_LONG).show()
 //                    startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
                 }
 

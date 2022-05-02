@@ -120,7 +120,7 @@ open class SignupActivity : AppCompatActivity() {
                             fireBaseUser.uid,
                             firstName,
                             lastName,
-                            email
+                            email,
                         )
 
                         // it calls my class FirestoreClass and calls the registerUser
@@ -143,6 +143,9 @@ open class SignupActivity : AppCompatActivity() {
         // It takes the user to the login page and close the register screen
         finish()
     }
+
+    // clear information
+    // txt_user.setText("")
 
 
 }
