@@ -8,15 +8,12 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -26,15 +23,11 @@ import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
-import com.marcosoliveira.myshopapp.architecture.ProductViewModel
-import com.marcosoliveira.myshopapp.notification.channelId
-import com.marcosoliveira.myshopapp.notification.channelName
-import com.marcosoliveira.myshopapp.util.Constants
-import okhttp3.internal.notify
 
 
 class CheckoutActivity : AppCompatActivity() {
 
+    lateinit var user: User
     lateinit var auth: FirebaseAuth
     var db = Firebase.firestore
 
@@ -49,21 +42,10 @@ class CheckoutActivity : AppCompatActivity() {
 
         createNotificationChannel()
 
-        // Notification
-        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("Hey user name")
-            .setContentText("Payment has been confirmed!")
-            .setSmallIcon(R.drawable.ic_notification_icon)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .build()
-        val notificationManager = NotificationManagerCompat.from(this)
-
-
         // btn pay now sends a message once the user paid for the product
         val btnPayNow = findViewById<Button>(R.id.btn_pay_now)
         btnPayNow.setOnClickListener {
             savingUserPaymentDetails()
-            notificationManager.notify(NOTIFICATION_ID, notification)
         }
     }
 
@@ -134,19 +116,31 @@ class CheckoutActivity : AppCompatActivity() {
             val state = findViewById<TextView>(R.id.etState).text.toString().trim { it <= ' '}
             val zipCode = findViewById<TextView>(R.id.etZipCode).text.toString().trim { it <= ' '}
 
-            // it sends the user details to database associated his ID
+            // it sends the user details to database associated with his/her ID
             val data = hashMapOf(
-                "phone" to phoneNo,
-                "address" to address,
-                "city" to city,
-                "state" to state,
-                "zipCode" to zipCode
+                "phone"     to phoneNo,
+                "address"   to address,
+                "city"      to city,
+                "state"     to state,
+                "zipCode"   to zipCode
             )
             val currentUser = FirebaseAuth.getInstance().currentUser
             if (currentUser != null) {
                 db.collection("user").document(currentUser.uid)
                     .set(data, SetOptions.merge())
             }
+
+            // Notification after all inputs have been filled in
+            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification_icon)
+                .setContentTitle("Payment confirmation.")
+                .setContentText("Thanks for buying with us.")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .build()
+
+            val notificationManager = NotificationManagerCompat.from(this)
+            notificationManager.notify(NOTIFICATION_ID, notification)
+
             orderCompletedWithSuccess()
         }
     }
@@ -155,7 +149,7 @@ class CheckoutActivity : AppCompatActivity() {
     fun orderCompletedWithSuccess(){
 
         // TODO Send the user their profile after payment
-        Toast.makeText(this@CheckoutActivity, "Order completed! Please check your E-mail.", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this@CheckoutActivity, "Order completed! Please check your E-mail.", Toast.LENGTH_SHORT).show()
         val intent = Intent(this@CheckoutActivity, MainActivity::class.java)
         startActivity(intent)
 

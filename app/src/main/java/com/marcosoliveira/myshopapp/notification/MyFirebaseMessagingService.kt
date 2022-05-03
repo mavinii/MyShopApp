@@ -14,12 +14,15 @@ import com.google.firebase.messaging.RemoteMessage
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.MainActivity
 
-const val channelId = "notification_channel"
-const val channelName = "com.marcosoliveira.myshopapp.notification"
+//const val channelId = "notification_channel"
+//const val channelName = "com.marcosoliveira.myshopapp.notification"
 
 // This class allows me to have notifications from the cloud with FireBase
 @SuppressLint("MissingFirebaseInstanceTokenRefresh")
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+
+    // THIS CLASS MESSAGES THE USER WITH FIREBASE "MESSAGING" FUNCTION
+    // BUT IT NEEDS TO BE DONE MANUALLY, IN FIREBASE CONSOLE.
 
 //    override fun onMessageReceived(remoteMessage: RemoteMessage) {
 //        if(remoteMessage.getNotification() != null){

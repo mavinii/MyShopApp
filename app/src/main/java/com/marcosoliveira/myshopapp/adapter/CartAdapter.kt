@@ -29,9 +29,7 @@ class CartAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<CartAda
         }
     }
 
-    val differ= AsyncListDiffer(this,differcallback)
-
-
+    val differ = AsyncListDiffer(this,differcallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Cartviewholder {
         return Cartviewholder(LayoutInflater.from(parent.context).inflate(R.layout.cart_view,parent,false))
