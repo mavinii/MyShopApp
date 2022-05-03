@@ -7,21 +7,27 @@
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_add.xml" value="0.3175" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_cart_checkout.xml" value="0.2485" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_delete.xml" value="0.3485" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_delivery.xml" value="0.2255" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_home.xml" value="0.2255" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2485" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_logout.xml" value="0.2485" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_search.xml" value="0.2485" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_shoppingcart.xml" value="0.2485" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/drawable/ic_subtract.xml" value="0.3635" />
-        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/activity_checkout.xml" value="0.33" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/activity_checkout.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/activity_main.xml" value="0.2558876811594203" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/cart_view.xml" value="0.31891891891891894" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_authentication.xml" value="0.33" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_cart.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_product.xml" value="0.4135546334716459" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_delivery.xml" value="0.3625" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_product.xml" value="0.33" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/fragment_signup.xml" value="0.21660649819494585" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/notification.xml" value="0.25" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/layout/productview.xml" value="0.28378378378378377" />
         <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/menu/app_menu.xml" value="0.22" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/menu/log_out_btn.xml" value="0.3625" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/menu/nav_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/pgmar/AndroidStudioProjects/MyShopApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3635" />
       </map>
     </option>
   </component>
