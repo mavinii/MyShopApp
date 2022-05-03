@@ -22,19 +22,18 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
 
-        <activity
-            android:name="com.marcosoliveira.myshopapp.models.CheckoutActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"/>
-        <activity android:name="com.marcosoliveira.myshopapp.models.SignupActivity" />
-        <activity android:name="com.marcosoliveira.myshopapp.models.SignInActivity" />
+        <activity android:name="com.marcosoliveira.myshopapp.models.CheckoutActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity android:name="com.marcosoliveira.myshopapp.models.SignupActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity android:name="com.marcosoliveira.myshopapp.models.SignInActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
         <activity android:name="com.marcosoliveira.myshopapp.models.MainActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!-- Firebase messaging -->
         <service
             android:name="com.marcosoliveira.myshopapp.notification.MyFirebaseMessagingService"
             android:exported="false"

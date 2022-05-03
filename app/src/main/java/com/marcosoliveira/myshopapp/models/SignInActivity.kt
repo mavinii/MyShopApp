@@ -48,9 +48,9 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
     fun userLoggedInSuccess(user: User){
 
         // it prints the user details
-        user.firstName?.let { Log.i("First Name: ", it) }
-        user.lastName?.let { Log.i("Last Name: ", it) }
-        Log.i("Email: ", user.email!!)
+//        user.firstName?.let { Log.i("First Name: ", it) }
+//        user.lastName?.let { Log.i("Last Name: ", it) }
+//        Log.i("Email: ", user.email!!)
 
         // Redirect the user to the Main Screen after log in
         startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
