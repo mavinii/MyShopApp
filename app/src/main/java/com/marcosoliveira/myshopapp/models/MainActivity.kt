@@ -37,53 +37,27 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.log_out_btn,menu)
+        menuInflater.inflate(R.menu.log_out_btn, menu)
         return true
     }
 
-    // If an user have already logged in
-    // this function log out a current user
+    // this function log in or out the current user
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         val currentUser = FirebaseAuth.getInstance().currentUser
 
         if(currentUser != null){
+
             firebaseAuth.signOut()
+
             val intent= Intent(this, MainActivity::class.java)
             startActivity(intent)
-            Toast.makeText(this,"You are logged out!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"You are logged out!", Toast.LENGTH_LONG).show()
 
         } else {
-            Toast.makeText(this,"Please log in or create an account!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"Please log in or create an account!", Toast.LENGTH_LONG).show()
         }
         return true
     }
-
-//    override fun onPaymentSuccess(p0: String?, p1: PaymentData?) {
-//         val map = HashMap<String, String>()
-//
-//         map["order_id"] = p1!!.orderId
-//         map["pay_id"] = p1.paymentId
-//         map["signature"] = p1.signature
-//
-//
-//         viewModel.updatetransaction(map)
-//
-//          viewModel.update.observe(this, Observer {
-//              when(it){
-//                  is Resource.Success->{
-//                      val message=it.message!!
-//                      Toast.makeText(this,"Error occured $message",Toast.LENGTH_LONG).show()
-//                  }
-//
-//                  is Resource.Error->{
-//                      if(it.data=="success"){
-//                          Toast.makeText(this,"Payment Successful",Toast.LENGTH_LONG).show()
-//                      }
-//                  }
-//              }
-//          })
-//
-//     }
 
 }

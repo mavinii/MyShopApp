@@ -149,11 +149,11 @@ class DeliveryFragment : Fragment(R.layout.fragment_delivery) {
     fun orderCompletedWithSuccess(){
 
         // TODO Send the user their profile after payment
-//        Toast.makeText(this@CheckoutActivity1, "Order completed! Please check your E-mail.", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this@CheckoutActivity, "Order completed! Please check your E-mail.", Toast.LENGTH_SHORT).show()
         val intent = Intent(context, MainActivity::class.java)
         startActivity(intent)
 
         // It takes the user to the login page and close the register screen
-//        intent.finish()
+//        finishActivity()
     }
 }
