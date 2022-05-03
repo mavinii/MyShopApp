@@ -7,25 +7,25 @@
     tools:context=".models.CheckoutActivity">
 
     <!-- Create an account Title -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/cart"
-        android:layout_width="412dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/cart"-->
+<!--        android:layout_width="412dp"-->
+<!--        android:layout_height="37dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingStart="-25dp"
-            android:paddingEnd="0dp"
-            android:text="CART"
-            android:textColor="@color/colorPrimary"
-            android:textSize="22sp" />
-    </androidx.appcompat.widget.Toolbar>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingStart="-25dp"-->
+<!--            android:paddingEnd="0dp"-->
+<!--            android:text="CART"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:textSize="22sp" />-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
 
     <!-- Cart icon -->
     <ImageView
@@ -33,11 +33,11 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="175dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="176dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cart"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_cart_checkout" />
 
     <TextView

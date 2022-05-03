@@ -33,8 +33,8 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
         val etSearch = view.findViewById<EditText>(R.id.etSearch)
         etSearch.addTextChangedListener { editable->
-            val category=editable.toString()
-            if(category=="electronics" || category=="jewelery" || category=="men's clothing" || category=="women's clothing"){
+            val category = editable.toString()
+            if(category == "electronics" || category== "jewelery" || category== "men's clothing" || category== "women's clothing"){
                 viewModel.searchProducts(category)
             }
 
