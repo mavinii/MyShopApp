@@ -24,7 +24,10 @@ class UserProfileActivity : AppCompatActivity() {
         // It displays the user name and email of the user profile, from the db
         user_profile_name.text = userDetails.firstName
         user_profile_email.text = userDetails.email
-
-
     }
+
+    // This function should be able to get the user pick 4:40
+//    override fun onClick(v: View?){
+//      Cod goes here
+//    }
 }

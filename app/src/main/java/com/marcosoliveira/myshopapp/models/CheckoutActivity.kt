@@ -24,7 +24,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
 
-class CheckoutActivity : AppCompatActivity() {
+class   CheckoutActivity : AppCompatActivity() {
 
     lateinit var user: User
     lateinit var auth: FirebaseAuth
@@ -148,8 +148,8 @@ class CheckoutActivity : AppCompatActivity() {
     fun orderCompletedWithSuccess(){
 
         // TODO Send the user their profile after payment
-//        Toast.makeText(this@CheckoutActivity, "Order completed! Please check your E-mail.", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this@CheckoutActivity, MainActivity::class.java)
+        // TODO using the intent, try to display user product bought in the profile activity
+        val intent = Intent(this@CheckoutActivity, UserProfileActivity::class.java)
         startActivity(intent)
 
         // It takes the user to the login page and close the register screen
