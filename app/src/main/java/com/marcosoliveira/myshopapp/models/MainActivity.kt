@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.log_out_btn, menu)
         return true

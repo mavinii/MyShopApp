@@ -61,6 +61,9 @@ class FirestoreClass {
                 // I have no idea what it is doing
                 val user = document.toObject(User::class.java)!!
 
+                // with i want allow the user to edit their details goes here 3:42:23
+                // how to display the user name, from Firestore 3:48:00
+
                 // START
                 when(activity){
                     is SignInActivity -> {

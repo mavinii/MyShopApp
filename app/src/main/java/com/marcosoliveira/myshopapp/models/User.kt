@@ -1,5 +1,6 @@
 package com.marcosoliveira.myshopapp.models
 
+// all inf that is going to be stored on Firebase
 data class User (
     val id: String = "",
     val firstName: String? = null,
