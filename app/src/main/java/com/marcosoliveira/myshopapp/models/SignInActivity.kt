@@ -39,7 +39,19 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
         // it prints the user details
 //        user.firstName?.let { Log.i("First Name: ", it) }
 //        user.lastName?.let { Log.i("Last Name: ", it) }
-//        Log.i("Email: ", user.email!!)
+//        user.email?.let { Log.i("Last Name: ", it) }
+
+        // TODO: later on i can add a "if" case the user had already entered their info,
+        // TODO: take them to the payment screen without take the user to the delivery screen. 4:12:00
+//        if (user.profileCompleted == 0){
+//            // If the user profile is incomplete then launch the UserProfileActivity.
+//            val intent = Intent( this@LoginActivity, UserProfileActivity::class.java)
+//            startActivity(intent)
+//        }else{
+//            // Redirect the user to Main Screen after log in.
+//            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+//        }
+//        finish()
 
         // Redirect the user to the Main Screen after log in
         startActivity(Intent(this@SignInActivity, UserProfileActivity::class.java))
