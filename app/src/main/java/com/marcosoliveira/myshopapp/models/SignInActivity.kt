@@ -42,7 +42,7 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
 //        Log.i("Email: ", user.email!!)
 
         // Redirect the user to the Main Screen after log in
-        startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
+        startActivity(Intent(this@SignInActivity, UserProfileActivity::class.java))
         finish()
 
 

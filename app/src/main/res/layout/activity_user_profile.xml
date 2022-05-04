@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".models.UserProfileActivity">
 
-    <!-- Main IMG   -->
+    <!-- img, name and email -->
     <FrameLayout
         android:id="@+id/fl_header_image"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,46 +20,63 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background" />
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="45dp"
+            android:layout_gravity="center|top"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_background"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/user_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_gravity="center"
+            android:text="User Name"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/user_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_gravity="center"
+            android:text="example@example.com"
+            android:textSize="14sp"/>
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/user_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background"
-        app:shapeAppearanceOverlay="@style/circular"
-        app:layout_constraintBottom_toBottomOf="@+id/fl_header_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_header_image"
-        app:tint="@color/colorPrimary"/>
-
     <TextView
-        android:id="@+id/user_profile_name"
+        android:id="@+id/list_of_products"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="156dp"
-        android:text="User Name"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_image" />
-
-    <TextView
-        android:id="@+id/user_profile_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="example@example.com"
-        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:text="List of Products"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_profile_name"/>
+        app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
 
+    <!-- Scrollview for showing products bought ? -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="452dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_of_products">
+
+
+
+
+
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
