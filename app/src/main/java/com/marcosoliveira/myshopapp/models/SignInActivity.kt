@@ -3,6 +3,7 @@ package com.marcosoliveira.myshopapp.models
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -12,6 +13,7 @@ import android.widget.Toast.makeText
 import com.marcosoliveira.myshopapp.R
 import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
+import com.marcosoliveira.myshopapp.util.Constants
 
 // 22931 - Marcos Oliveira
 open class SignInActivity : SignupActivity(), View.OnClickListener {
@@ -37,27 +39,22 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
     fun userLoggedInSuccess(user: User){
 
         // it prints the user details
-//        user.firstName?.let { Log.i("First Name: ", it) }
-//        user.lastName?.let { Log.i("Last Name: ", it) }
-//        user.email?.let { Log.i("Last Name: ", it) }
+        Log.i("First Name: ", user.firstName!!)
+        Log.i("Last Name: ", user.lastName!!)
+        Log.i("Last Name: ", user.email!!)
 
         // TODO: later on i can add a "if" case the user had already entered their info,
         // TODO: take them to the payment screen without take the user to the delivery screen. 4:12:00
-//        if (user.profileCompleted == 0){
-//            // If the user profile is incomplete then launch the UserProfileActivity.
-//            val intent = Intent( this@LoginActivity, UserProfileActivity::class.java)
-//            startActivity(intent)
-//        }else{
-//            // Redirect the user to Main Screen after log in.
-//            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-//        }
-//        finish()
-
-        // Redirect the user to the Main Screen after log in
-        startActivity(Intent(this@SignInActivity, UserProfileActivity::class.java))
+        if (user.phone != null){
+            // If the user profile is incomplete then launch the UserProfileActivity.
+            val intent = Intent( this@SignInActivity, UserProfileActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+            startActivity(intent)
+        }else{
+            // Redirect the user to Main Screen after log in.
+            startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
+        }
         finish()
-
-
     }
 
     override fun onClick(view: View?){

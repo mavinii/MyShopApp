@@ -10,7 +10,7 @@ import com.marcosoliveira.myshopapp.models.SignupActivity
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 
-// Class responsible for taking care of all the Firestorm stuff
+// Class responsible for taking care of all the Firestorm data
 // 22931 - Marcos Oliveira
 class FirestoreClass {
 
