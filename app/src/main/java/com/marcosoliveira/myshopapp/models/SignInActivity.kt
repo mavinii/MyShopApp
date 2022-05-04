@@ -3,25 +3,15 @@ package com.marcosoliveira.myshopapp.models
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.makeText
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
 import com.marcosoliveira.myshopapp.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 // 22931 - Marcos Oliveira
 open class SignInActivity : SignupActivity(), View.OnClickListener {
@@ -38,7 +28,6 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
         val signInbt = findViewById<Button>(R.id.signInbt)
         signInbt.setOnClickListener(this)
 
-
         // REGISTER
         val signupbt = findViewById<TextView>(R.id.signupbt)
         signupbt.setOnClickListener(this)
@@ -53,8 +42,10 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
 //        Log.i("Email: ", user.email!!)
 
         // Redirect the user to the Main Screen after log in
-        startActivity(Intent(this, DeliveryFragment::class.java))
+        startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
         finish()
+
+
     }
 
     override fun onClick(view: View?){
@@ -118,7 +109,6 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
                     if(task.isSuccessful){
                         FirestoreClass().getUserDetails(this@SignInActivity)
                     } else {
-
                         //It show a message in case something goes wrong
                         makeText(this, task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
                     }

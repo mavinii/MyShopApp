@@ -6,27 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".models.CheckoutActivity">
 
-    <!-- Create an account Title -->
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/cart"-->
-<!--        android:layout_width="412dp"-->
-<!--        android:layout_height="37dp"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:gravity="center"-->
-<!--            android:paddingStart="-25dp"-->
-<!--            android:paddingEnd="0dp"-->
-<!--            android:text="CART"-->
-<!--            android:textColor="@color/colorPrimary"-->
-<!--            android:textSize="22sp" />-->
-<!--    </androidx.appcompat.widget.Toolbar>-->
-
     <!-- Cart icon -->
     <ImageView
         android:id="@+id/iconCart"
@@ -38,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cart_checkout" />
+        app:srcCompat="@drawable/ic_delivery" />
 
     <TextView
         android:id="@+id/textView9"

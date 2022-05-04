@@ -73,7 +73,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         if(currentUser != null){
 
             // Redirect the user to the CheckoutActivity Screen
-            val intent = Intent(context, DeliveryFragment::class.java)
+            val intent = Intent(context, CheckoutActivity::class.java)
             startActivity(intent)
         } else {
 
