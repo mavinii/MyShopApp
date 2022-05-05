@@ -7,4 +7,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="delete">#FF1818</color>
     <color name="add_or_remove">#14235D</color>
+
+    <!--  snack bar from BaseActivity  -->
+    <color name="colorSnackBarError">#F32424</color>
+    <color name="colorSnackBarSuccess">#36AE7C</color>
 </resources>

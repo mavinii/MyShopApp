@@ -20,7 +20,7 @@ import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 
 // 22931 - Marcos Oliveira
-open class LoginActivity : RegisterActivity(), View.OnClickListener {
+open class LoginActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,6 +120,9 @@ open class LoginActivity : RegisterActivity(), View.OnClickListener {
     private fun logInRegisteredUser(){
         if (validateLoginDetails()){
 
+            // shows the progressbar
+            showProgressDialog(resources.getString(R.string.please_wait))
+
             // trim cuts all the empty spaces
             val email = findViewById<EditText>(R.id.EmailText).text.toString().trim { it <= ' '}
             val password = findViewById<EditText>(R.id.passwordText).text.toString().trim { it <= ' '}
@@ -128,6 +131,9 @@ open class LoginActivity : RegisterActivity(), View.OnClickListener {
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
 
                 .addOnCompleteListener { task ->
+
+                    // Hide de progress dialog
+                    hideProgressDialog()
 
                     // If user is registered on database, he can login
                     if(task.isSuccessful){

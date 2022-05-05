@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar.*
 import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.R
 
-class ForgotPasswordActivity : AppCompatActivity() {
+class ForgotPasswordActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
@@ -49,15 +49,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
             else {
 
-//                // it calls the class Loading to display to progressBar animation
-//                progressDialog.show(this,"")
-//
-//                // progressBar animation timer
-//                Handler(Looper.getMainLooper()).postDelayed({
-//                    // Dismiss progress bar after 4 seconds
-//                    progressDialog.dialog.dismiss()
-//                }, 3000)
-
             // Firebase Function to reset the mail
             FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                 .addOnCompleteListener { task ->
@@ -66,11 +57,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
                         // Message
                         makeText(this@ForgotPasswordActivity, "Email sent! Please check your email.",
-                            Toast.LENGTH_LONG
-                        ).show()
+                            Toast.LENGTH_LONG).show()
 
                         // It finishes the screen and back to the login
-                            finish()
+                        finish()
                     } else {
                         //It show a message in case something goes wrong
                         makeText(

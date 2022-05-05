@@ -42,7 +42,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
 
         viewModel.SearchProducts.observe(viewLifecycleOwner, Observer{
 
-            val paginationProgressBar = view.findViewById<ProgressBar>(R.id.paginationProgressBar)
+            val paginationProgressBar = view.findViewById<ProgressBar>(R.id.progressBar)
 
             when(it){
                 is Resource.Success->{
@@ -70,20 +70,23 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
 
             when(it){
                 is Resource.Success->{
-                    paginationProgressBar.visibility= View.INVISIBLE
+                    paginationProgressBar.visibility = View.INVISIBLE
+
                     it.data?.let{NewProducts->
                         Productadapter.differ.submitList(NewProducts)
                     }
                 }
 
                 is Resource.Error->{
-                    paginationProgressBar.visibility= View.INVISIBLE
+                    paginationProgressBar.visibility = View.INVISIBLE
+
                     val message=it.message
                     Log.e(TAG,"an error occured $message")
                 }
 
                 is Resource.Loading->{
-                    paginationProgressBar.visibility= View.VISIBLE
+                    paginationProgressBar.visibility = View.VISIBLE
+
                 }
             }
         })

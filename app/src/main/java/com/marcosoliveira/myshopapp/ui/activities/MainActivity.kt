@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 // 22931 - Marcos Oliveira 6:00 / 6:12 / 6:23
 // 6:21 ele mostra o dashboard ele com navContoller
-// tava 1:42
+// tava 2:30
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: ProductViewModel
@@ -33,17 +33,6 @@ class MainActivity : AppCompatActivity() {
         val productViewModelFactory = ProductViewModelFactory(productRepository)
         viewModel = ViewModelProvider(this, productViewModelFactory).get(ProductViewModel::class.java)
 
-        // This should enable the bottom nav controller with icons
-//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-//        val naviController = findNavController(R.id.nav_host_fragment_container)
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.productFragment, R.id.cartFragment
-//            )
-//        )
-//
-//        setupActionBarWithNavController(naviController, appBarConfiguration)
-//        navView.setupWithNavController(naviController)
     }
 
     // It adds the settings menu icon on the top

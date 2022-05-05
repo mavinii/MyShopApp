@@ -16,7 +16,7 @@ import com.marcosoliveira.myshopapp.firestore.FirestoreClass
 import com.marcosoliveira.myshopapp.models.User
 import kotlinx.android.synthetic.main.activity_register.*
 
-open class RegisterActivity : AppCompatActivity() {
+open class RegisterActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,6 +119,9 @@ open class RegisterActivity : AppCompatActivity() {
         // Check with validate entries are valid
         if (validateRegisterDetails()){
 
+            // it displays the dialog from the class BaseActivity
+            showProgressDialog(resources.getString(R.string.please_wait))
+
             // It cuts all the empty spaces in the email and password input
             val firstName = findViewById<TextView>(R.id.et_first_name).text.toString().trim { it <= ' '}
             val lastName = findViewById<TextView>(R.id.et_last_name).text.toString().trim { it <= ' '}
@@ -128,6 +131,9 @@ open class RegisterActivity : AppCompatActivity() {
             //It creates a user with email and password in my database
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
+
+                    // progress dialog
+                    hideProgressDialog()
 
                     //If registration is successfully done
                     if (task.isSuccessful){
