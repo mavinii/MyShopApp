@@ -1,10 +1,13 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -12,7 +15,6 @@ import android.widget.Toast
 import android.widget.Toast.makeText
 import com.marcosoliveira.myshopapp.R
 import com.google.firebase.auth.FirebaseAuth
-import com.marcosoliveira.myshopapp.adapter.CartAdapter
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
@@ -22,7 +24,18 @@ open class LoginActivity : RegisterActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_login)
+        setContentView(R.layout.activity_login)
+
+        // this hides the very top bar
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else{
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
 
         // FORGOT PASSWORD
         val tvForgotPassword = findViewById<TextView>(R.id.tv_forgot_password)

@@ -1,8 +1,11 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -16,7 +19,18 @@ open class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_register)
+        setContentView(R.layout.activity_register)
+
+        // this hides the very top bar
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else{
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
 
         // It takes the user to the create an account page
         val tvLogin = findViewById<TextView>(R.id.tv_login)

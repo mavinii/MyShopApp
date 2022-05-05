@@ -10,7 +10,7 @@ import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 import kotlinx.android.synthetic.main.activity_user_profile.*
-import kotlinx.android.synthetic.main.fragment_register.*
+import kotlinx.android.synthetic.main.activity_register.*
 
 class UserProfileActivity : AppCompatActivity() {
 

@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // This Handler calls the MainActivity after a delay of 2000 secs
+        // This hides the top of the app
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
             window.insetsController?.hide(WindowInsets.Type.statusBars())
@@ -26,11 +26,12 @@ class SplashActivity : AppCompatActivity() {
             )
         }
 
+        // This Handler calls the MainActivity after a delay of 2000 secs
         @Suppress("DEPRECATION")
         Handler(Looper.getMainLooper()).postDelayed({
 
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()
-        }, 2000)
+        }, 1500)
     }
 }
