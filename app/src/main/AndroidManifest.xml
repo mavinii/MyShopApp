@@ -14,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyShopApp">
         <activity
-            android:name=".ui.activities.ForgotPasswordActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:name=".ui.activities.BaseActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.activities.ForgotPasswordActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".ui.activities.UserProfileActivity"
             android:exported="false" />
@@ -36,27 +39,20 @@
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".ui.activities.LoginActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
-
-        <!-- This line calls my SplashActivity before the MainActivity -->
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" /> <!-- This line calls my SplashActivity before the MainActivity -->
         <activity
             android:name=".ui.activities.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Main Page -->
+        </activity> <!-- Main Page -->
         <activity
             android:name=".ui.activities.MainActivity"
-            android:exported="false" />
-
-        <!-- Firebase messaging -->
+            android:exported="false" /> <!-- Firebase messaging -->
         <service
             android:name=".notification.MyFirebaseMessagingService"
             android:exported="false"

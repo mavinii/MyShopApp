@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 // 22931 - Marcos Oliveira 6:00 / 6:12 / 6:23
 // 6:21 ele mostra o dashboard ele com navContoller
-// tava 6:24:14
+// tava 1:42
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: ProductViewModel

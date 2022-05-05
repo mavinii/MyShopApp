@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
 import com.marcosoliveira.myshopapp.models.User
+import kotlinx.android.synthetic.main.activity_register.*
 
 open class RegisterActivity : AppCompatActivity() {
 
@@ -32,6 +33,9 @@ open class RegisterActivity : AppCompatActivity() {
             )
         }
 
+        // Icon to come back
+        setUpActionBar()
+
         // It takes the user to the create an account page
         val tvLogin = findViewById<TextView>(R.id.tv_login)
         tvLogin.setOnClickListener {
@@ -41,6 +45,14 @@ open class RegisterActivity : AppCompatActivity() {
         val registerbt = findViewById<Button>(R.id.registerbt)
         registerbt.setOnClickListener {
             registerUser()
+        }
+    }
+
+    private fun setUpActionBar(){
+        val backBtn = findViewById<ImageView>(R.id.toolbar_register_activity)
+        backBtn.setOnClickListener {
+            onBackPressed()
+            finish()
         }
     }
 

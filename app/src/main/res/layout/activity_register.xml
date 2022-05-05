@@ -8,7 +8,7 @@
 
     <!-- Create an account Title -->
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_register_activity"
+        android:id="@+id/toolbar"
         android:layout_width="412dp"
         android:layout_height="37dp"
         android:layout_marginTop="15dp"
@@ -16,8 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
+        <!-- icon back -->
+        <ImageView
+            android:id="@+id/toolbar_register_activity"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -33,7 +41,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_register_activity">
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
