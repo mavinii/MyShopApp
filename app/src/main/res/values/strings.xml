@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MyShopApp</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Splash Screen -->
+    <string name="my_shop_app">MyShopApp</string>
+    <string name="developed_by">Developed by Marcos Oliveira</string>
 </resources>
