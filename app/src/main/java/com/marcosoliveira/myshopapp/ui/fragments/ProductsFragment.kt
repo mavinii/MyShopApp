@@ -37,7 +37,6 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
             if(category == "electronics" || category== "jewelery" || category== "men's clothing" || category== "women's clothing"){
                 viewModel.searchProducts(category)
             }
-
         }
 
 

@@ -6,6 +6,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.architecture.ProductRepository
 import com.marcosoliveira.myshopapp.architecture.ProductViewModel
@@ -30,6 +35,20 @@ class MainActivity : AppCompatActivity() {
         val productRepository = ProductRepository(Productdb(this))
         val productViewModelFactory = ProductViewModelFactory(productRepository)
         viewModel= ViewModelProvider(this,productViewModelFactory).get(ProductViewModel::class.java)
+
+        // This should enable the bottom nav controller with icons
+//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+//        val naviController = findNavController(R.id.nav_host_fragment_container)
+//        val appBarConfiguration = AppBarConfiguration(
+//            setOf(
+//                R.id.productFragment, R.id.cartFragment
+//            )
+//        )
+//
+//        setupActionBarWithNavController(naviController, appBarConfiguration)
+//        navView.setupWithNavController(naviController)
+
+
 
 
 
