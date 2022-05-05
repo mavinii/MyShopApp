@@ -21,7 +21,7 @@ import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 
-class   CheckoutActivity : AppCompatActivity() {
+class   DeliveryActivity : AppCompatActivity() {
 
     lateinit var user: User
     lateinit var auth: FirebaseAuth
@@ -34,7 +34,7 @@ class   CheckoutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_checkout)
+        setContentView(R.layout.activity_delivery)
 
         createNotificationChannel()
 
@@ -146,7 +146,7 @@ class   CheckoutActivity : AppCompatActivity() {
 
         // TODO Send the user their profile after payment
         // TODO using the intent, try to display user product bought in the profile activity
-        val intent = Intent(this@CheckoutActivity, UserProfileActivity::class.java)
+        val intent = Intent(this@DeliveryActivity, UserProfileActivity::class.java)
         startActivity(intent)
 
         // It takes the user to the login page and close the register screen

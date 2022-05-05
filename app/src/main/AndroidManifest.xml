@@ -22,11 +22,11 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/colorPrimary" />
         <activity
-            android:name="com.marcosoliveira.myshopapp.ui.activities.CheckoutActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:name="com.marcosoliveira.myshopapp.ui.activities.DeliveryActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name="com.marcosoliveira.myshopapp.ui.activities.SignupActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:name="com.marcosoliveira.myshopapp.ui.activities.RegisterActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name="com.marcosoliveira.myshopapp.ui.activities.SignInActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:name="com.marcosoliveira.myshopapp.ui.activities.LoginActivity" android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity android:name="com.marcosoliveira.myshopapp.ui.activities.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

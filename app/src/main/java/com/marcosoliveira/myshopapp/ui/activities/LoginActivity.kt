@@ -12,16 +12,17 @@ import android.widget.Toast
 import android.widget.Toast.makeText
 import com.marcosoliveira.myshopapp.R
 import com.google.firebase.auth.FirebaseAuth
+import com.marcosoliveira.myshopapp.adapter.CartAdapter
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 
 // 22931 - Marcos Oliveira
-open class SignInActivity : SignupActivity(), View.OnClickListener {
+open class LoginActivity : RegisterActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_authentication)
+        setContentView(R.layout.fragment_login)
 
         // FORGOT PASSWORD
         val tvForgotPassword = findViewById<TextView>(R.id.tv_forgot_password)
@@ -48,12 +49,12 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
         // TODO: take them to the payment screen without take the user to the delivery screen. 4:12:00
         if (user.phone != null){
             // If the user profile is incomplete then launch the UserProfileActivity.
-            val intent = Intent( this@SignInActivity, UserProfileActivity::class.java)
+            val intent = Intent( this@LoginActivity, DeliveryActivity::class.java)
             intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
             startActivity(intent)
         }else{
             // Redirect the user to Main Screen after log in.
-            startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
+            startActivity(Intent(this@LoginActivity, DeliveryActivity::class.java))
         }
         finish()
     }
@@ -64,7 +65,7 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
 
                 R.id.tv_forgot_password -> {
                     makeText(this, "Forgot password is not working yet", Toast.LENGTH_LONG).show()
-//                    startActivity(Intent(this@SignInActivity, CheckoutActivity::class.java))
+//                    startActivity(Intent(this@LoginActivity, DeliveryActivity::class.java))
                 }
 
                 R.id.signInbt -> {
@@ -72,7 +73,7 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
                 }
 
                 R.id.signupbt -> {
-                    val intent = Intent(this@SignInActivity, SignupActivity::class.java)
+                    val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
                     startActivity(intent)
                 }
             }
@@ -117,7 +118,7 @@ open class SignInActivity : SignupActivity(), View.OnClickListener {
 
                     // If user is registered on database, he can login
                     if(task.isSuccessful){
-                        FirestoreClass().getUserDetails(this@SignInActivity)
+                        FirestoreClass().getUserDetails(this@LoginActivity)
                     } else {
                         //It show a message in case something goes wrong
                         makeText(this, task.exception!!.message.toString(), Toast.LENGTH_LONG).show()

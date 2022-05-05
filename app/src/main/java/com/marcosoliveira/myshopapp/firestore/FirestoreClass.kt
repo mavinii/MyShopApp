@@ -5,8 +5,8 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.marcosoliveira.myshopapp.ui.activities.SignInActivity
-import com.marcosoliveira.myshopapp.ui.activities.SignupActivity
+import com.marcosoliveira.myshopapp.ui.activities.LoginActivity
+import com.marcosoliveira.myshopapp.ui.activities.RegisterActivity
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 
@@ -19,12 +19,12 @@ class FirestoreClass {
 
 
     // This function register an user, from the RegisterActivity
-    fun registerUser(activity: SignupActivity, userInfo: User){
+    fun registerUser(activity: RegisterActivity, userInfo: User){
         mFirestore.collection(Constants.USER)
             .document(userInfo.id)                  // It gets the id from "User" activity
             .set(userInfo, SetOptions.merge())      // It merges the both information
             .addOnFailureListener {
-                activity.userRegistrationSuccess()  // It calls my function userRegistrationonSuccess from SignupActivity class
+                activity.userRegistrationSuccess()  // It calls my function userRegistrationonSuccess from RegisterActivity class
             }
 
             .addOnFailureListener{
@@ -66,7 +66,7 @@ class FirestoreClass {
 
                 // START
                 when(activity){
-                    is SignInActivity -> {
+                    is LoginActivity -> {
                         // Call a function of base activity for transferring the result to it
                         // userLoggedInSuccess is a function from LoginActivity
                         activity.userLoggedInSuccess(user)

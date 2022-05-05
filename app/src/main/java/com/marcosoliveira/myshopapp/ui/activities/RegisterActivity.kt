@@ -12,11 +12,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
 import com.marcosoliveira.myshopapp.models.User
 
-open class SignupActivity : AppCompatActivity() {
+open class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_signup)
+        setContentView(R.layout.fragment_register)
 
         // It takes the user to the create an account page
         val tvLogin = findViewById<TextView>(R.id.tv_login)
@@ -118,20 +118,20 @@ open class SignupActivity : AppCompatActivity() {
                         )
 
                         // it calls my class FirestoreClass and calls the registerUser
-                        FirestoreClass().registerUser(this@SignupActivity, user)
+                        FirestoreClass().registerUser(this@RegisterActivity, user)
                         userRegistrationSuccess()
 
                     } else {
                         //It show a message in case something goes wrong
-                        Toast.makeText(this@SignupActivity, task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@RegisterActivity, task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
                     }
                 }
         }
     }
 
     fun userRegistrationSuccess(){
-        Toast.makeText(this@SignupActivity, "You are registered successfully!", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this@SignupActivity, SignInActivity::class.java)
+        Toast.makeText(this@RegisterActivity, "You are registered successfully!", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
         startActivity(intent)
 
         // It takes the user to the login page and close the register screen

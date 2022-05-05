@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <item
-        android:title="Log Out"
-        android:id="@+id/btlogOut"
-        android:icon="@drawable/ic_logout"
+        android:title="Settings"
+        android:id="@+id/btnSettings"
+        android:icon="@drawable/ic_settings"
         app:showAsAction="always" />
 </menu>

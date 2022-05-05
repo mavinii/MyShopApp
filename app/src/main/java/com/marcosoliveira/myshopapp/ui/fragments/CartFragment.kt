@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.adapter.CartAdapter
 import com.marcosoliveira.myshopapp.architecture.ProductViewModel
-import com.marcosoliveira.myshopapp.ui.activities.CheckoutActivity
+import com.marcosoliveira.myshopapp.ui.activities.DeliveryActivity
 import com.marcosoliveira.myshopapp.ui.activities.MainActivity
-import com.marcosoliveira.myshopapp.ui.activities.SignInActivity
+import com.marcosoliveira.myshopapp.ui.activities.LoginActivity
 import java.math.BigDecimal
 
 class CartFragment : Fragment(R.layout.fragment_cart) {
@@ -67,7 +67,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
     }
 
-    // If user IS already signed in, go to CheckoutActivity
+    // If user IS already signed in, go to DeliveryActivity
     // if NOT, go to sign in page
     private fun navigate(newamt: String) {
 
@@ -75,13 +75,13 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
         if(currentUser != null){
 
-            // Redirect the user to the CheckoutActivity Screen
-            val intent = Intent(context, CheckoutActivity::class.java)
+            // Redirect the user to the DeliveryActivity Screen
+            val intent = Intent(context, DeliveryActivity::class.java)
             startActivity(intent)
         } else {
 
             // if user is not signed in, go to sing in page
-            val intent = Intent(context, SignInActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
             intent.putExtra("AMOUNT",newamt)
             startActivity(intent)
         }
