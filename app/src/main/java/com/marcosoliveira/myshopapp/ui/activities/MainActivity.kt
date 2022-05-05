@@ -49,29 +49,4 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.settings_menu_btn, menu)
-//        return true
-//    }
-//
-//    // this function log in or out the current user
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//
-//        val currentUser = FirebaseAuth.getInstance().currentUser
-//
-//        if(currentUser != null){
-//
-//            firebaseAuth.signOut()
-//
-//            val intent= Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            Toast.makeText(this,"You are logged out!", Toast.LENGTH_LONG).show()
-//
-//        } else {
-//            Toast.makeText(this,"Please log in or create an account!", Toast.LENGTH_LONG).show()
-//        }
-//        return true
-//    }
-
 }
