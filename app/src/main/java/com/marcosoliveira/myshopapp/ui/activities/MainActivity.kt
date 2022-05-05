@@ -24,17 +24,14 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: ProductViewModel
-    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        firebaseAuth = FirebaseAuth.getInstance()
-
         val productRepository = ProductRepository(Productdb(this))
         val productViewModelFactory = ProductViewModelFactory(productRepository)
-        viewModel= ViewModelProvider(this,productViewModelFactory).get(ProductViewModel::class.java)
+        viewModel = ViewModelProvider(this, productViewModelFactory).get(ProductViewModel::class.java)
 
         // This should enable the bottom nav controller with icons
 //        val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -47,12 +44,6 @@ class MainActivity : AppCompatActivity() {
 //
 //        setupActionBarWithNavController(naviController, appBarConfiguration)
 //        navView.setupWithNavController(naviController)
-
-
-
-
-
-
     }
 
     // It adds the settings menu icon on the top

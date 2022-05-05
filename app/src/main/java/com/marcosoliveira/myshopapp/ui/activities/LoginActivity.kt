@@ -64,8 +64,8 @@ open class LoginActivity : RegisterActivity(), View.OnClickListener {
             when (view.id){
 
                 R.id.tv_forgot_password -> {
-                    makeText(this, "Forgot password is not working yet", Toast.LENGTH_LONG).show()
-//                    startActivity(Intent(this@LoginActivity, DeliveryActivity::class.java))
+                    val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+                    startActivity(intent)
                 }
 
                 R.id.signInbt -> {

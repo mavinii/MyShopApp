@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyShopApp">
-
+        <activity
+            android:name=".ui.activities.ForgotPasswordActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.UserProfileActivity"
             android:exported="false" />
@@ -24,6 +27,7 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
+
         <activity
             android:name=".ui.activities.DeliveryActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -37,9 +41,9 @@
         <!-- This line calls my SplashActivity before the MainActivity -->
         <activity
             android:name=".ui.activities.SplashActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"
             android:exported="true"
-            android:screenOrientation="fullSensor">
+            android:theme="@style/Theme.Design.Light.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +54,7 @@
         <!-- Main Page -->
         <activity
             android:name=".ui.activities.MainActivity"
-            android:screenOrientation="fullSensor" />
+            android:exported="false" />
 
         <!-- Firebase messaging -->
         <service

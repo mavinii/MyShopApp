@@ -1,5 +1,6 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -46,6 +47,7 @@ class   DeliveryActivity : AppCompatActivity() {
     }
 
     //It creates a notification
+    @SuppressLint("ObsoleteSdkInt")
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH).apply {
@@ -130,7 +132,7 @@ class   DeliveryActivity : AppCompatActivity() {
             val notification = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification_icon)
                 .setContentTitle("Payment confirmation.")
-                .setContentText("Thanks for buying with us.")
+                .setContentText("Please check user profile for more.")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .build()
 
@@ -146,7 +148,7 @@ class   DeliveryActivity : AppCompatActivity() {
 
         // TODO Send the user their profile after payment
         // TODO using the intent, try to display user product bought in the profile activity
-        val intent = Intent(this@DeliveryActivity, UserProfileActivity::class.java)
+        val intent = Intent(this@DeliveryActivity, MainActivity::class.java)
         startActivity(intent)
 
         // It takes the user to the login page and close the register screen

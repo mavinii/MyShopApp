@@ -5,4 +5,11 @@
     <!-- Splash Screen -->
     <string name="my_shop_app">MyShopApp</string>
     <string name="developed_by">Developed by Marcos Oliveira</string>
+
+    <!--  Forgot Password page  -->
+    <string name="content_description">image</string>
+    <string name="et_hint_email_id">Email</string>
+    <string name="title_forgot_password">FORGOT PASSWORD?</string>
+    <string name="forgot_password_title_description">Enter your e-mail address we\'ll send you an email to reset your password</string>
+    <string name="btn_lbl_submit">Submit</string>
 </resources>
