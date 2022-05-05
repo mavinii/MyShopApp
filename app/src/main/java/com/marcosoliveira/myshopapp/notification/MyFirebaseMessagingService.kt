@@ -1,18 +1,7 @@
 package com.marcosoliveira.myshopapp.notification
 
 import android.annotation.SuppressLint
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import android.os.Build
-import android.widget.RemoteViews
-import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
-import com.google.firebase.messaging.RemoteMessage
-import com.marcosoliveira.myshopapp.R
-import com.marcosoliveira.myshopapp.models.MainActivity
 
 //const val channelId = "notification_channel"
 //const val channelName = "com.marcosoliveira.myshopapp.notification"

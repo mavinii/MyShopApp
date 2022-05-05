@@ -1,4 +1,4 @@
-package com.marcosoliveira.myshopapp.models
+package com.marcosoliveira.myshopapp.ui.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.adapter.CartAdapter
 import com.marcosoliveira.myshopapp.architecture.ProductViewModel
+import com.marcosoliveira.myshopapp.ui.activities.CheckoutActivity
+import com.marcosoliveira.myshopapp.ui.activities.MainActivity
+import com.marcosoliveira.myshopapp.ui.activities.SignInActivity
 import java.math.BigDecimal
 
 class CartFragment : Fragment(R.layout.fragment_cart) {

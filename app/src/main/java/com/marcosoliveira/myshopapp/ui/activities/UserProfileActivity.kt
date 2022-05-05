@@ -1,8 +1,7 @@
-package com.marcosoliveira.myshopapp.models
+package com.marcosoliveira.myshopapp.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants

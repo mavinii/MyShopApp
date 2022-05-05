@@ -5,8 +5,8 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.marcosoliveira.myshopapp.models.SignInActivity
-import com.marcosoliveira.myshopapp.models.SignupActivity
+import com.marcosoliveira.myshopapp.ui.activities.SignInActivity
+import com.marcosoliveira.myshopapp.ui.activities.SignupActivity
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 

@@ -1,4 +1,4 @@
-package com.marcosoliveira.myshopapp.models
+package com.marcosoliveira.myshopapp.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,7 @@ import android.widget.Toast.makeText
 import com.marcosoliveira.myshopapp.R
 import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
+import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 
 // 22931 - Marcos Oliveira

@@ -1,9 +1,7 @@
-package com.marcosoliveira.myshopapp.models
+package com.marcosoliveira.myshopapp.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.TextUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -12,11 +10,7 @@ import com.marcosoliveira.myshopapp.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
+import com.marcosoliveira.myshopapp.models.User
 
 open class SignupActivity : AppCompatActivity() {
 

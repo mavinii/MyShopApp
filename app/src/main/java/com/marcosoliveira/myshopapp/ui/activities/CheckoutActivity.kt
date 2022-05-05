@@ -1,4 +1,4 @@
-package com.marcosoliveira.myshopapp.models
+package com.marcosoliveira.myshopapp.ui.activities
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,14 +15,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
+import com.marcosoliveira.myshopapp.models.User
 
 class   CheckoutActivity : AppCompatActivity() {
 

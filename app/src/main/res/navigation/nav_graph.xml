@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/productFragment"
-        android:name="com.marcosoliveira.myshopapp.models.ProductFragment"
+        android:name="com.marcosoliveira.myshopapp.ui.fragments.ProductsFragment"
         android:label="ProductFragment" >
         <action
             android:id="@+id/action_productFragment_to_cartFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.marcosoliveira.myshopapp.models.CartFragment"
+        android:name="com.marcosoliveira.myshopapp.ui.fragments.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
 </navigation>

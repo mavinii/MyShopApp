@@ -33,7 +33,7 @@ class ProductAdapter(val viewModel: ProductViewModel): RecyclerView.Adapter<Prod
     val differ=AsyncListDiffer(this,differcallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Productviewholder {
-        return Productviewholder(LayoutInflater.from(parent.context).inflate(R.layout.productview,parent,false))
+        return Productviewholder(LayoutInflater.from(parent.context).inflate(R.layout.product_view,parent,false))
     }
 
     override fun onBindViewHolder(holder: Productviewholder, position: Int) {

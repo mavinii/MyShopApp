@@ -1,22 +1,20 @@
-package com.marcosoliveira.myshopapp.models
+package com.marcosoliveira.myshopapp.ui.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.architecture.ProductRepository
 import com.marcosoliveira.myshopapp.architecture.ProductViewModel
 import com.marcosoliveira.myshopapp.architecture.ProductViewModelFactory
 import com.marcosoliveira.myshopapp.architecture.Productdb
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.NonCancellable.cancel
 
+// 22931 - Marcos Oliveira 6:00 / 6:12
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: ProductViewModel
