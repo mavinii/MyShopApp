@@ -63,12 +63,10 @@ class FirestoreClass {
                 // I have no idea what it is doing
                 val user = document.toObject(User::class.java)!!
 
-
-                // to retrieve data from firebase and display on UserProfileActivity
+                // to retrieve data from firebase and share between MainActivity, UserProfileActivity
                 val sharedPreferences = activity.getSharedPreferences(Constants.MYSHOPAPP_PREFERENCES, Context.MODE_PRIVATE)
                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                editor.putString(Constants.LOGGED_IN_USERNAME, "${user.firstName}")
-                editor.putString(Constants.LOGGED_IN_EMAIL, "${user.phone}")
+                editor.putString(Constants.LOGGED_IN_USERNAME, "${user.firstName} ${user.email} ${user.phone}") //4:28
                 editor.apply()
 
 

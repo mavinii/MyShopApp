@@ -1,5 +1,6 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -42,12 +43,12 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
         tvForgotPassword.setOnClickListener(this)
 
         // LOGIN BUTTON
-        val signInbt = findViewById<Button>(R.id.signInbt)
-        signInbt.setOnClickListener(this)
+        val loginBtn = findViewById<Button>(R.id.signInbt)
+        loginBtn.setOnClickListener(this)
 
         // REGISTER
-        val signupbt = findViewById<TextView>(R.id.signupbt)
-        signupbt.setOnClickListener(this)
+        val registerBtn = findViewById<TextView>(R.id.signupbt)
+        registerBtn.setOnClickListener(this)
     }
 
     // This function takes the user to fill in the checkout screen:
@@ -60,15 +61,16 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
 
         // TODO: later on i can add a "if" case the user had already entered their info,
         // TODO: take them to the payment screen without take the user to the delivery screen. 4:12:00
-        if (user.state != null){
+        // If the user profile is incomplete then launch the UserProfileActivity
+        if (user.firstName != null){
             // If the user profile is incomplete then launch the UserProfileActivity.
             val intent = Intent( this@LoginActivity, UserProfileActivity::class.java)
             intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
             startActivity(intent)
-        }else{
+        } else {
             // Redirect the user to Main Screen after log in.
-            startActivity(Intent(this@LoginActivity, DeliveryActivity::class.java))
-            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+            val intent = Intent(this@LoginActivity, DeliveryActivity::class.java)
+            startActivity(intent)
         }
         finish()
     }
@@ -101,12 +103,12 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
         val password = findViewById<EditText>(R.id.passwordText)
 
         return when {
-            TextUtils.isEmpty(email.text.toString().trim() {it <= ' '}) -> {
+            TextUtils.isEmpty(email.text.toString().trim {it <= ' '}) -> {
                 makeText(this, "EMAIL can not be empty!", Toast.LENGTH_LONG).show()
                 false
             }
 
-            TextUtils.isEmpty(password.text.toString().trim() {it <= ' '}) -> {
+            TextUtils.isEmpty(password.text.toString().trim {it <= ' '}) -> {
                 makeText(this, "PASSWORD can not be empty!", Toast.LENGTH_LONG).show()
                 false
             }

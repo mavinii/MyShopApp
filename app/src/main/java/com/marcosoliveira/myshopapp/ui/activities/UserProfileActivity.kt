@@ -28,16 +28,14 @@ class UserProfileActivity : AppCompatActivity() {
 
         var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
-
             // it gets the details from intent as a ParcelableExtra
             userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
-
         }
 
         // It displays the user name and email of the user profile, from the db
-        user_profile_name.text = "Hi, ${userDetails.firstName}"
-        user_profile_email.text = "Email: ${userDetails.email}"
-        user_profile_number.text = "Phone: ${userDetails.phone}"
+        user_profile_name.text = userDetails.firstName
+        user_profile_email.text = userDetails.email
+        user_profile_number.text = userDetails.phone
 
         val backBtn = findViewById<ImageView>(R.id.toolbar_icon_user_profile)
         backBtn.setOnClickListener {
@@ -49,6 +47,8 @@ class UserProfileActivity : AppCompatActivity() {
             logInOrLogOut()
         }
     }
+
+
 
     // this function checks if user is log in, if so, log out the current user
     // if not, takes the user to the log in screen

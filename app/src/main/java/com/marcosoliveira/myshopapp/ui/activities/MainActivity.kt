@@ -1,5 +1,6 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,8 @@ import com.marcosoliveira.myshopapp.architecture.ProductViewModel
 import com.marcosoliveira.myshopapp.architecture.ProductViewModelFactory
 import com.marcosoliveira.myshopapp.architecture.Productdb
 import com.google.firebase.auth.FirebaseAuth
+import com.marcosoliveira.myshopapp.util.Constants
+import kotlinx.android.synthetic.main.activity_user_profile.*
 
 // 22931 - Marcos Oliveira 6:00 / 6:12 / 6:23
 // 6:21 ele mostra o dashboard ele com navContoller
@@ -28,6 +31,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sharedPreferences = getSharedPreferences(Constants.MYSHOPAPP_PREFERENCES, Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
+
+//        user_profile_name.setText(username)
 
         val productRepository = ProductRepository(Productdb(this))
         val productViewModelFactory = ProductViewModelFactory(productRepository)
