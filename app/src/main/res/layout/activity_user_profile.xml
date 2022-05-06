@@ -6,6 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.UserProfileActivity">
 
+    <!-- Create an account Title -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_user_profile"
+        android:layout_width="412dp"
+        android:layout_height="37dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <!-- icon back -->
+        <ImageView
+            android:id="@+id/toolbar_icon_user_profile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/tv_title_user_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingStart="-25dp"
+            android:paddingEnd="0dp"
+            android:text="USER PROFILE"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <!-- img, name and email -->
     <FrameLayout
         android:id="@+id/fl_header_image"
@@ -13,7 +42,7 @@
         android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_user_profile">
 
         <ImageView
             android:layout_width="411dp"
@@ -37,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:text="User Name"
+            android:text=""
             android:textSize="18sp"
             android:textStyle="bold"/>
 
@@ -47,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
             android:layout_gravity="center"
-            android:text="example@example.com"
+            android:text=""
             android:textSize="14sp"/>
 
         <TextView
@@ -56,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:layout_gravity="center"
-            android:text="123 456 789"
+            android:text=""
             android:textSize="14sp"/>
 
         <Button

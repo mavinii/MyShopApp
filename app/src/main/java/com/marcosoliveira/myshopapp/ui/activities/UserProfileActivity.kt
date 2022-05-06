@@ -1,9 +1,12 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.R
@@ -16,25 +19,30 @@ class UserProfileActivity : AppCompatActivity() {
 
     lateinit var firebaseAuth: FirebaseAuth
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-//        setupActionBar()
-
         var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
 
             // it gets the details from intent as a ParcelableExtra
             userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
+
         }
 
         // It displays the user name and email of the user profile, from the db
-        user_profile_name.text = userDetails.firstName
-        user_profile_email.text = userDetails.email
-        user_profile_number.text = userDetails.phone
+        user_profile_name.text = "Hi, ${userDetails.firstName}"
+        user_profile_email.text = "Email: ${userDetails.email}"
+        user_profile_number.text = "Phone: ${userDetails.phone}"
+
+        val backBtn = findViewById<ImageView>(R.id.toolbar_icon_user_profile)
+        backBtn.setOnClickListener {
+            onBackPressed()
+        }
 
         val btnLogOut = findViewById<Button>(R.id.log_out_user_profile)
         btnLogOut.setOnClickListener {

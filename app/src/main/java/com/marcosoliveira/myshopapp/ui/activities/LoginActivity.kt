@@ -53,21 +53,22 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
     // This function takes the user to fill in the checkout screen:
     fun userLoggedInSuccess(user: User){
 
-        // it prints the user details
+        // it prints the user details in the log
         Log.i("First Name: ", user.firstName!!)
-        Log.i("Last Name: ", user.lastName!!)
+        Log.i("Last Phone: ", user.phone!!)
         Log.i("Last Name: ", user.email!!)
 
         // TODO: later on i can add a "if" case the user had already entered their info,
         // TODO: take them to the payment screen without take the user to the delivery screen. 4:12:00
-        if (user.phone != null){
+        if (user.state != null){
             // If the user profile is incomplete then launch the UserProfileActivity.
-            val intent = Intent( this@LoginActivity, DeliveryActivity::class.java)
+            val intent = Intent( this@LoginActivity, UserProfileActivity::class.java)
             intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
             startActivity(intent)
         }else{
             // Redirect the user to Main Screen after log in.
             startActivity(Intent(this@LoginActivity, DeliveryActivity::class.java))
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
         }
         finish()
     }

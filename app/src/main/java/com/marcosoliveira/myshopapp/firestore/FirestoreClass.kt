@@ -1,6 +1,8 @@
 package com.marcosoliveira.myshopapp.firestore
 
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -61,8 +63,14 @@ class FirestoreClass {
                 // I have no idea what it is doing
                 val user = document.toObject(User::class.java)!!
 
-                // with i want allow the user to edit their details goes here 3:42:23
-                // how to display the user name, from Firestore 3:48:00
+
+                // to retrieve data from firebase and display on UserProfileActivity
+                val sharedPreferences = activity.getSharedPreferences(Constants.MYSHOPAPP_PREFERENCES, Context.MODE_PRIVATE)
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(Constants.LOGGED_IN_USERNAME, "${user.firstName}")
+                editor.putString(Constants.LOGGED_IN_EMAIL, "${user.phone}")
+                editor.apply()
+
 
                 // START
                 when(activity){
