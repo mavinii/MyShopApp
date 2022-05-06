@@ -65,7 +65,7 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
         if (user.firstName != null){
             // If the user profile is incomplete then launch the UserProfileActivity.
             val intent = Intent( this@LoginActivity, UserProfileActivity::class.java)
-            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user) //it gets the parcelable details from Constants
             startActivity(intent)
         } else {
             // Redirect the user to Main Screen after log in.
