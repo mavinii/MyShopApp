@@ -34,7 +34,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-//        auth = Firebase.auth
+//        auth = Firebase.auth << THIS GUY HERE IS THE SOURCE OF PROBLEM!
 
         // This is getting the object from LoginActivity
         var userDetails: User = User()
