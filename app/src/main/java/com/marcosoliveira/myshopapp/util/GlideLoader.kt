@@ -3,6 +3,7 @@ package com.marcosoliveira.myshopapp.util
 import android.content.Context
 import android.net.Uri
 import android.widget.ImageView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.marcosoliveira.myshopapp.R
 import java.io.IOException
@@ -12,6 +13,7 @@ import java.net.URI
 class GlideLoader(val context: Context) {
 
     fun loadUserPicture(imgeURI: Uri, imageView: ImageView){
+
         try {
             // Glide load the user image in the ImageView
             Glide
