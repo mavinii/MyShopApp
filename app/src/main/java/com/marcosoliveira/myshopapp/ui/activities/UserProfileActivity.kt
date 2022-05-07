@@ -1,11 +1,9 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
-import android.Manifest
 import android.Manifest.*
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -61,14 +59,14 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         if (currentUser != null) {
 
             // it allows the user to click in their photo
-            val userImg = findViewById<ImageView>(R.id.user_img)
+            val userImg = findViewById<ImageView>(R.id.profile_image)
             userImg.setOnClickListener(this@UserProfileActivity)
 
             btnLogOut.setOnClickListener {
                 logInOrLogOut()
             }
         } else {
-            val userImg = findViewById<ImageView>(R.id.user_img)
+            val userImg = findViewById<ImageView>(R.id.profile_image)
             userImg.isEnabled = false
             btnLogOut.isEnabled = false
             btnLogOut.setBackgroundColor(ContextCompat.getColor(btnLogOut.context,R.color.disableBtn))
@@ -93,7 +91,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         if (view != null){
             when (view.id) {
 
-                R.id.user_img -> {
+                R.id.profile_image -> {
 
                     // If user already gave permission
                     if(checkSelfPermission(this, permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
@@ -133,7 +131,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                     try {
                         val selectedImageFileUri = data.data!!
 
-                        val userImg = findViewById<ImageView>(R.id.user_img)
+                        val userImg = findViewById<ImageView>(R.id.profile_image)
 //                      userImg.setImageURI((Uri.parse(selectedImageFileUri.toString())))
                         GlideLoader(this).loadUserPicture(selectedImageFileUri, userImg)
                     } catch (e: IOException){
