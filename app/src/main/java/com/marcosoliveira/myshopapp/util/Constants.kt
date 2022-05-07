@@ -5,7 +5,7 @@ import android.content.Intent
 import android.provider.MediaStore
 
 object Constants {
-    const val USER: String = "user"
+    const val USERS: String = "users"
     const val MYSHOPAPP_PREFERENCES: String = "MyShopAppPreferences"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
     const val EXTRA_USER_DETAILS: String = "extra_user_details"
@@ -13,8 +13,6 @@ object Constants {
     // THE CODE 2, shows that user gave permission to use storage
     const val READ_STORAGE_PERMISSION_CODE = 2
     const val PICK_IMAGE_REQUEST_CODE = 1
-
-
 
 
     // this function helps to get the user picture from the device gallery

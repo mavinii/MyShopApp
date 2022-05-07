@@ -24,7 +24,7 @@ import com.marcosoliveira.myshopapp.util.Constants
 
 // 22931 - Marcos Oliveira 6:00 / 6:12 / 6:23
 // 6:21 ele mostra o dashboard ele com navContoller
-// tava 4:50
+// tava 5:03
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: ProductViewModel
@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val sharedPreferences = getSharedPreferences(Constants.MYSHOPAPP_PREFERENCES, Context.MODE_PRIVATE)
-        val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
-
+//        val sharedPreferences = getSharedPreferences(Constants.MYSHOPAPP_PREFERENCES, Context.MODE_PRIVATE)
+//        val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
+//
 //        val userProfileName = findViewById<TextView>(R.id.user_profile_name)
-//        userProfileName.setText(username)
+//        userProfileName.text = username 3:48
 
         val productRepository = ProductRepository(Productdb(this))
         val productViewModelFactory = ProductViewModelFactory(productRepository)

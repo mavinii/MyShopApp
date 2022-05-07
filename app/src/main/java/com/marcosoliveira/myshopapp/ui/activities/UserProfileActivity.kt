@@ -10,20 +10,19 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 //import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
+import com.marcosoliveira.myshopapp.util.GlideLoader
 //import kotlinx.android.synthetic.main.activity_user_profile.*
 //import kotlinx.android.synthetic.main.activity_register.*
 import java.io.IOException
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
+    private var mUserDetails: User? = null
     private lateinit var firebaseAuth: FirebaseAuth
     private val currentUser = FirebaseAuth.getInstance().currentUser
-    private var userDetails: User = User()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,18 +31,24 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         firebaseAuth = FirebaseAuth.getInstance()
 
         // This is getting the object from LoginActivity
-//        var userDetails: User = User()
+//        var mUserDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
             // it gets the details from intent as a ParcelableExtra
-            userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
+            mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
         // It displays the user name and email of the user profile, from the db,
         // But it still has some bugs, once it displays the user details, going to the main activity
         // and coming back, the details disappear
-        findViewById<TextView>(R.id.user_profile_name).text = userDetails.firstName //4:50
-        findViewById<TextView>(R.id.user_profile_email).text = userDetails.email
-        findViewById<TextView>(R.id.user_profile_number).text = userDetails.phone
+        findViewById<EditText>(R.id.user_profile_Fname).isEnabled = false
+        findViewById<EditText>(R.id.user_profile_Fname).setText(mUserDetails?.firstName) //4:50
+
+        findViewById<EditText>(R.id.user_profile_Lemail).isEnabled = false
+        findViewById<EditText>(R.id.user_profile_Lemail).setText(mUserDetails?.lastName)
+
+        findViewById<EditText>(R.id.user_profile_email).isEnabled = false
+        findViewById<EditText>(R.id.user_profile_email).setText(mUserDetails?.email)
+
 
         val backBtn = findViewById<ImageView>(R.id.toolbar_icon_user_profile)
         backBtn.setOnClickListener {
@@ -73,7 +78,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
     // this function logs out the user
     fun logInOrLogOut(){
 
-        showProgressDialog()
+//        showProgressDialog()
 
         firebaseAuth.signOut()
         val intent = Intent(this, MainActivity::class.java)
@@ -126,8 +131,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 if (data !== null){
                     try {
                         val selectedImageFileUri = data.data!!
+
                         val userImg = findViewById<ImageView>(R.id.user_img)
-                        userImg.setImageURI(selectedImageFileUri)
+                        GlideLoader(this).loadUserPicture(selectedImageFileUri, userImg)
+//                        userImg.setImageURI(selectedImageFileUri)
                     } catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(this, "Ops, image selected failed!", Toast.LENGTH_LONG).show()

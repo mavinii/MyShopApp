@@ -55,21 +55,21 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
     fun userLoggedInSuccess(user: User){
 
         // it prints the user details in the log
-        Log.i("First Name: ", user.firstName!!)
-        Log.i("Last Phone: ", user.phone!!)
-        Log.i("Last Name: ", user.email!!)
+        Log.i("First Name: ", user.firstName)
+        Log.i("Last Phone: ", user.lastName)
+        Log.i("Last Name: ", user.email)
 
         // TODO: later on i can add a "if" case the user had already entered their info,
         // TODO: take them to the payment screen without take the user to the delivery screen. 4:12:00
         // If the user profile is incomplete then launch the UserProfileActivity
-        if (user.firstName != null){
+        if (user.profileCompleted == 0){
             // If the user profile is incomplete then launch the UserProfileActivity.
-            val intent = Intent( this@LoginActivity, UserProfileActivity::class.java)
+            val intent = Intent( this@LoginActivity, UserProfileActivity::class.java) //DeliveryActivity
             intent.putExtra(Constants.EXTRA_USER_DETAILS, user) //it gets the parcelable details from Constants
             startActivity(intent)
         } else {
             // Redirect the user to Main Screen after log in.
-            val intent = Intent(this@LoginActivity, DeliveryActivity::class.java)
+            val intent = Intent(this@LoginActivity, UserProfileActivity::class.java)
             startActivity(intent)
         }
         finish()
@@ -135,13 +135,13 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
 
                 .addOnCompleteListener { task ->
 
-                    // Hide de progress dialog
-                    hideProgressDialog()
-
-                    // If user is registered on database, he can login
+                     // If user is registered on database, he can login
                     if(task.isSuccessful){
                         FirestoreClass().getUserDetails(this@LoginActivity)
                     } else {
+                        // Hide de progress dialog
+                        hideProgressDialog()
+
                         //It show a message in case something goes wrong
                         makeText(this, task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
                     }
