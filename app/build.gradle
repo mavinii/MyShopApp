@@ -14,13 +14,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 32
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.marcosoliveira.myshopapp"
         minSdkVersion 28
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -60,16 +60,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
     implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
-//    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.1.2'
 
-//    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.1'
-//    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
-//    implementation 'com.google.firebase:firebase-database:20.0.4'
-//    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.3'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
+    implementation 'com.google.firebase:firebase-database:20.0.5'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

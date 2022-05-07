@@ -1,12 +1,8 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -22,22 +18,21 @@ import com.marcosoliveira.myshopapp.util.Constants
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.activity_register.*
 import java.io.IOException
-import java.util.jar.Manifest
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
-    private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
     private val currentUser = FirebaseAuth.getInstance().currentUser
-//    var userDetails: User = User()
+    private var userDetails: User = User()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-//        auth = Firebase.auth << THIS GUY HERE IS THE SOURCE OF PROBLEM!
+        firebaseAuth = FirebaseAuth.getInstance()
 
         // This is getting the object from LoginActivity
-        var userDetails: User = User()
+//        var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
             // it gets the details from intent as a ParcelableExtra
             userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
@@ -46,13 +41,9 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         // It displays the user name and email of the user profile, from the db,
         // But it still has some bugs, once it displays the user details, going to the main activity
         // and coming back, the details disappear
-
-        user_profile_name.isEnabled = false
-        user_profile_name.setText(userDetails.firstName)
-
-//        findViewById<EditText>(R.id.user_profile_name).setText(userDetails.firstName) //4:50
-//        findViewById<TextView>(R.id.user_profile_email).text = userDetails.email
-//        findViewById<TextView>(R.id.user_profile_number).text = userDetails.phone
+        findViewById<TextView>(R.id.user_profile_name).text = userDetails.firstName //4:50
+        findViewById<TextView>(R.id.user_profile_email).text = userDetails.email
+        findViewById<TextView>(R.id.user_profile_number).text = userDetails.phone
 
         val backBtn = findViewById<ImageView>(R.id.toolbar_icon_user_profile)
         backBtn.setOnClickListener {
@@ -75,14 +66,12 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             btnLogOut.isEnabled = false
             btnLogOut.setBackgroundColor(ContextCompat.getColor(btnLogOut.context,R.color.disableBtn))
         }
-
-
     }
 
     // this function logs out the user
     fun logInOrLogOut(){
 
-        auth.signOut()
+        firebaseAuth.signOut()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
