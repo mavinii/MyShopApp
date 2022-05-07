@@ -34,7 +34,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         // This is getting the object from LoginActivity
 //        var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
-            // it gets the details from intent as a ParcelableExtra
+            // it gets the details from intent as a ParcelableExtra   
             userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
@@ -78,7 +78,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         Toast.makeText(this,"You are logged out!", Toast.LENGTH_LONG).show()
     }
 
-    // Method implemented cuz im using View.OnClickListener
+    // Method implemented because im using View.OnClickListener
     // Function that gets the user picture on the gallery
     override fun onClick(view: View?) {
         if (view != null){

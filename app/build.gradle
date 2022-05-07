@@ -1,17 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
-
-repositories {
-    mavenCentral()
-
-    flatDir{
-        dirs 'libs'
-    }
-}
 
 android {
     compileSdkVersion 32
@@ -19,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.marcosoliveira.myshopapp"
-        minSdkVersion 28
+        minSdkVersion 22
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
