@@ -53,15 +53,7 @@
         </activity> <!-- Main Page -->
         <activity
             android:name=".ui.activities.MainActivity"
-            android:exported="false" /> <!-- Firebase messaging -->
-        <service
-            android:name=".notification.MyFirebaseMessagingService"
-            android:exported="false"
-            tools:ignore="Instantiatable">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -1,34 +1,42 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.activity_register.*
+import java.io.IOException
+import java.util.jar.Manifest
 
-class UserProfileActivity : BaseActivity() {
+class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
-    lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private val currentUser = FirebaseAuth.getInstance().currentUser
+//    var userDetails: User = User()
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+//        auth = Firebase.auth
 
-        // getting this object from LoginActivity
+        // This is getting the object from LoginActivity
         var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
             // it gets the details from intent as a ParcelableExtra
@@ -38,34 +46,100 @@ class UserProfileActivity : BaseActivity() {
         // It displays the user name and email of the user profile, from the db,
         // But it still has some bugs, once it displays the user details, going to the main activity
         // and coming back, the details disappear
-        user_profile_name.text = userDetails.firstName
-        user_profile_email.text = userDetails.email
-        user_profile_number.text = userDetails.phone
+
+        user_profile_name.isEnabled = false
+        user_profile_name.setText(userDetails.firstName)
+
+//        findViewById<EditText>(R.id.user_profile_name).setText(userDetails.firstName) //4:50
+//        findViewById<TextView>(R.id.user_profile_email).text = userDetails.email
+//        findViewById<TextView>(R.id.user_profile_number).text = userDetails.phone
 
         val backBtn = findViewById<ImageView>(R.id.toolbar_icon_user_profile)
         backBtn.setOnClickListener {
             onBackPressed()
         }
 
-        // It disables the log out button, until the user connects
+        // It disables the log out button and picture, until the user connects
+        // to their account, allowing them to upload their profile picture
         val btnLogOut = findViewById<Button>(R.id.log_out_user_profile)
         if (currentUser != null) {
+
+            // it allows the user to click in their photo
+            user_img.setOnClickListener(this@UserProfileActivity)
+
             btnLogOut.setOnClickListener {
                 logInOrLogOut()
             }
         } else {
+            user_img.isEnabled = false
             btnLogOut.isEnabled = false
             btnLogOut.setBackgroundColor(ContextCompat.getColor(btnLogOut.context,R.color.disableBtn))
         }
+
+
     }
 
     // this function logs out the user
     fun logInOrLogOut(){
 
-            firebaseAuth.signOut()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-            Toast.makeText(this,"You are logged out!", Toast.LENGTH_LONG).show()
+        auth.signOut()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+        Toast.makeText(this,"You are logged out!", Toast.LENGTH_LONG).show()
+    }
+
+    // Method implemented cuz im using View.OnClickListener
+    // Function that gets the user picture on the gallery
+    override fun onClick(view: View?) {
+        if (view != null){
+            when (view.id) {
+
+                R.id.user_img -> {
+
+                    // If user already gave permission
+                    if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+//                        Toast.makeText(this, "You already have storage permission", Toast.LENGTH_LONG).show()
+                        Constants.showImageChooser(this)
+                    } else {
+                        //
+                        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),Constants.READ_STORAGE_PERMISSION_CODE)
+                    }
+                }
+            }
+        }
+    }
+
+    // Function that gets the user picture on the gallery
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+//            Toast.makeText(this, "Store permission granted!", Toast.LENGTH_LONG).show()
+            Constants.showImageChooser(this)
+        } else {
+            Toast.makeText(this, "PERMISSION DENIED! You can also allow it on Settings.", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    // Function that gets the user picture on the gallery
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK){
+            if(requestCode == Constants.PICK_IMAGE_REQUEST_CODE){
+                if (data !== null){
+                    try {
+                        val selectedImageFileUri = data.data!!
+                        user_img.setImageURI(selectedImageFileUri)
+                    } catch (e: IOException){
+                        e.printStackTrace()
+                        Toast.makeText(this, "Ops, image selected failed!", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
     }
 }

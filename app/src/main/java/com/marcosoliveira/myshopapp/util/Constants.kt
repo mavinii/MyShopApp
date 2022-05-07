@@ -10,11 +10,14 @@ object Constants {
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
     const val EXTRA_USER_DETAILS: String = "extra_user_details"
 
+    // THE CODE 2, shows that user gave permission to use storage
     const val READ_STORAGE_PERMISSION_CODE = 2
     const val PICK_IMAGE_REQUEST_CODE = 1
 
 
-    // this function helps to get the user picture from the device
+
+
+    // this function helps to get the user picture from the device gallery
     fun showImageChooser(activity: Activity){
 
         // this intent for launching the image selection of phone storage

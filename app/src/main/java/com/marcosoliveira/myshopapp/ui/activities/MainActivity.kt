@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_user_profile.*
 
 // 22931 - Marcos Oliveira 6:00 / 6:12 / 6:23
 // 6:21 ele mostra o dashboard ele com navContoller
-// tava 2:30
+// tava 4:50
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: ProductViewModel
