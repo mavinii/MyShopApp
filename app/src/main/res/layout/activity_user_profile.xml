@@ -57,7 +57,6 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="center|top"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_launcher_background"
             app:tint="@color/disableBtn" />
 
         <TextView
@@ -98,7 +97,7 @@
         android:id="@+id/list_of_products"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:text="List of Products"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +107,7 @@
     <!-- Scrollview for showing products bought ? -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="452dp"
+        android:layout_height="385dp"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

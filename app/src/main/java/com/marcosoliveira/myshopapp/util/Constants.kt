@@ -5,6 +5,7 @@ import android.content.Intent
 import android.provider.MediaStore
 
 object Constants {
+    // LOCAL variables
     const val USERS: String = "users"
     const val MYSHOPAPP_PREFERENCES: String = "MyShopAppPreferences"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"

@@ -1,13 +1,17 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
+import android.Manifest
+import android.Manifest.*
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import com.google.firebase.auth.FirebaseAuth
 //import com.google.firebase.auth.ktx.auth
 import com.marcosoliveira.myshopapp.R
@@ -42,7 +46,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         // and coming back, the details disappear
 //        findViewById<TextView>(R.id.user_profile_Fname).isEnabled = false
         findViewById<TextView>(R.id.user_profile_Fname).text = mUserDetails?.firstName  //USER NAME
-        findViewById<TextView>(R.id.user_profile_Lemail).text = mUserDetails?.lastName  //USER PHONE ?
+        findViewById<TextView>(R.id.user_profile_Lemail).text = mUserDetails?.lastName  //USER PHONE ? .toString()
         findViewById<TextView>(R.id.user_profile_email).text = mUserDetails?.email      //USER EMAIL
 
 
@@ -92,12 +96,13 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 R.id.user_img -> {
 
                     // If user already gave permission
-                    if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    if(checkSelfPermission(this, permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
 //                        Toast.makeText(this, "You already have storage permission", Toast.LENGTH_LONG).show()
                         Constants.showImageChooser(this)
                     } else {
                         //
-                        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),Constants.READ_STORAGE_PERMISSION_CODE)
+                        ActivityCompat.requestPermissions(this, arrayOf(permission.READ_EXTERNAL_STORAGE),
+                            Constants.READ_STORAGE_PERMISSION_CODE)
                     }
                 }
             }
@@ -112,8 +117,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-//            Toast.makeText(this, "Store permission granted!", Toast.LENGTH_LONG).show()
             Constants.showImageChooser(this)
+//            Toast.makeText(this, "Image added", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(this, "PERMISSION DENIED! You can also allow it on Settings.", Toast.LENGTH_LONG).show()
         }
@@ -129,8 +134,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                         val selectedImageFileUri = data.data!!
 
                         val userImg = findViewById<ImageView>(R.id.user_img)
+//                      userImg.setImageURI((Uri.parse(selectedImageFileUri.toString())))
                         GlideLoader(this).loadUserPicture(selectedImageFileUri, userImg)
-//                        userImg.setImageURI(selectedImageFileUri)
                     } catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(this, "Ops, image selected failed!", Toast.LENGTH_LONG).show()
