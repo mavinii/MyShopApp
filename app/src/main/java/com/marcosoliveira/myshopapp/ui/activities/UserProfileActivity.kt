@@ -40,14 +40,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         // It displays the user name and email of the user profile, from the db,
         // But it still has some bugs, once it displays the user details, going to the main activity
         // and coming back, the details disappear
-        findViewById<EditText>(R.id.user_profile_Fname).isEnabled = false
-        findViewById<EditText>(R.id.user_profile_Fname).setText(mUserDetails?.firstName) //4:50
-
-        findViewById<EditText>(R.id.user_profile_Lemail).isEnabled = false
-        findViewById<EditText>(R.id.user_profile_Lemail).setText(mUserDetails?.lastName)
-
-        findViewById<EditText>(R.id.user_profile_email).isEnabled = false
-        findViewById<EditText>(R.id.user_profile_email).setText(mUserDetails?.email)
+//        findViewById<TextView>(R.id.user_profile_Fname).isEnabled = false
+        findViewById<TextView>(R.id.user_profile_Fname).text = mUserDetails?.firstName  //USER NAME
+        findViewById<TextView>(R.id.user_profile_Lemail).text = mUserDetails?.lastName  //USER PHONE ?
+        findViewById<TextView>(R.id.user_profile_email).text = mUserDetails?.email      //USER EMAIL
 
 
         val backBtn = findViewById<ImageView>(R.id.toolbar_icon_user_profile)
