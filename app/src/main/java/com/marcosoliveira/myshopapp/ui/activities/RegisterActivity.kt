@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.marcosoliveira.myshopapp.firestore.FirestoreClass
 import com.marcosoliveira.myshopapp.models.User
-import kotlinx.android.synthetic.main.activity_register.*
+//import kotlinx.android.synthetic.main.activity_register.*
 
 open class RegisterActivity : BaseActivity() {
 
@@ -120,7 +120,7 @@ open class RegisterActivity : BaseActivity() {
         if (validateRegisterDetails()){
 
             // it displays the dialog from the class BaseActivity
-            showProgressDialog(resources.getString(R.string.please_wait))
+            showProgressDialog()
 
             // It cuts all the empty spaces in the email and password input
             val firstName = findViewById<TextView>(R.id.et_first_name).text.toString().trim { it <= ' '}

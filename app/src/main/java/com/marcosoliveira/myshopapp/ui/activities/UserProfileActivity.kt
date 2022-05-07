@@ -15,8 +15,8 @@ import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
-import kotlinx.android.synthetic.main.activity_user_profile.*
-import kotlinx.android.synthetic.main.activity_register.*
+//import kotlinx.android.synthetic.main.activity_user_profile.*
+//import kotlinx.android.synthetic.main.activity_register.*
 import java.io.IOException
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
@@ -34,7 +34,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         // This is getting the object from LoginActivity
 //        var userDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
-            // it gets the details from intent as a ParcelableExtra   
+            // it gets the details from intent as a ParcelableExtra
             userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
@@ -56,13 +56,15 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         if (currentUser != null) {
 
             // it allows the user to click in their photo
-            user_img.setOnClickListener(this@UserProfileActivity)
+            val userImg = findViewById<ImageView>(R.id.user_img)
+            userImg.setOnClickListener(this@UserProfileActivity)
 
             btnLogOut.setOnClickListener {
                 logInOrLogOut()
             }
         } else {
-            user_img.isEnabled = false
+            val userImg = findViewById<ImageView>(R.id.user_img)
+            userImg.isEnabled = false
             btnLogOut.isEnabled = false
             btnLogOut.setBackgroundColor(ContextCompat.getColor(btnLogOut.context,R.color.disableBtn))
         }
@@ -70,6 +72,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     // this function logs out the user
     fun logInOrLogOut(){
+
+        showProgressDialog()
 
         firebaseAuth.signOut()
         val intent = Intent(this, MainActivity::class.java)
@@ -122,7 +126,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 if (data !== null){
                     try {
                         val selectedImageFileUri = data.data!!
-                        user_img.setImageURI(selectedImageFileUri)
+                        val userImg = findViewById<ImageView>(R.id.user_img)
+                        userImg.setImageURI(selectedImageFileUri)
                     } catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(this, "Ops, image selected failed!", Toast.LENGTH_LONG).show()

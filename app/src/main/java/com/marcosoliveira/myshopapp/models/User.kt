@@ -1,7 +1,7 @@
 package com.marcosoliveira.myshopapp.models
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 // all inf that is going to be stored on Firebase
 @Parcelize

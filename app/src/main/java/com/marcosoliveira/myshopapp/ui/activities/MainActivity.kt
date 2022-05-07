@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,7 +20,7 @@ import com.marcosoliveira.myshopapp.architecture.ProductViewModelFactory
 import com.marcosoliveira.myshopapp.architecture.Productdb
 import com.google.firebase.auth.FirebaseAuth
 import com.marcosoliveira.myshopapp.util.Constants
-import kotlinx.android.synthetic.main.activity_user_profile.*
+//import kotlinx.android.synthetic.main.activity_user_profile.*
 
 // 22931 - Marcos Oliveira 6:00 / 6:12 / 6:23
 // 6:21 ele mostra o dashboard ele com navContoller
@@ -35,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences(Constants.MYSHOPAPP_PREFERENCES, Context.MODE_PRIVATE)
         val username = sharedPreferences.getString(Constants.LOGGED_IN_USERNAME, "")!!
 
-//        user_profile_name.setText(username)
+//        val userProfileName = findViewById<TextView>(R.id.user_profile_name)
+//        userProfileName.setText(username)
 
         val productRepository = ProductRepository(Productdb(this))
         val productViewModelFactory = ProductViewModelFactory(productRepository)

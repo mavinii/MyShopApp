@@ -124,7 +124,7 @@ open class LoginActivity : BaseActivity(), View.OnClickListener {
         if (validateLoginDetails()){
 
             // shows the progressbar
-            showProgressDialog(resources.getString(R.string.please_wait))
+            showProgressDialog()
 
             // trim cuts all the empty spaces
             val email = findViewById<EditText>(R.id.EmailText).text.toString().trim { it <= ' '}
