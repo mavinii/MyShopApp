@@ -26,12 +26,12 @@
 4 - Show order history:
 - [ ] List users orders
 - [ ] On clicking an Order, show Order details and Products ordered
-- [ ] On clicking a Product, take them to Product description page created for 3.3
+- [x] On clicking a Product, take them to Product description page created for 3.3
 
 5 - Show User details:
-- [ ] Use the stored userID to show user details
+- [x] Use the stored userID to show user details
 - [ ] Show a random circular profile image from https://thispersondoesnotexist.com/
-- [ ] Show Logout button, on click take back to Signup / Log In page (Restart should not auto login after logout)
+- [x] Show Logout button, on click take back to Signup / Log In page (Restart should not auto login after logout)
 
 6 - UI/Implementations Requirements:
 - [ ] RecyclerView used for all Lists: Categories, Products, Orders
