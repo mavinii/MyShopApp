@@ -24,7 +24,7 @@ import com.marcosoliveira.myshopapp.util.Constants
 
 // 22931 - Marcos Oliveira 6:00 / 6:12 / 6:23
 // 6:21 ele mostra o dashboard ele com navContoller
-// tava 5:03
+// tava 5:17:20 Storage
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: ProductViewModel
