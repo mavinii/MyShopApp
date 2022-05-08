@@ -1,5 +1,6 @@
 package com.marcosoliveira.myshopapp.ui.activities
 
+import android.Manifest.*
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -8,22 +9,22 @@ import android.view.View
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import com.google.firebase.auth.FirebaseAuth
 //import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 import com.marcosoliveira.myshopapp.util.Constants
-import kotlinx.android.synthetic.main.activity_user_profile.*
-import kotlinx.android.synthetic.main.activity_register.*
+import com.marcosoliveira.myshopapp.util.GlideLoader
+//import kotlinx.android.synthetic.main.activity_user_profile.*
+//import kotlinx.android.synthetic.main.activity_register.*
 import java.io.IOException
 
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
+    private var mUserDetails: User? = null
     private lateinit var firebaseAuth: FirebaseAuth
     private val currentUser = FirebaseAuth.getInstance().currentUser
-    private var userDetails: User = User()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,18 +33,19 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         firebaseAuth = FirebaseAuth.getInstance()
 
         // This is getting the object from LoginActivity
-//        var userDetails: User = User()
+//        var mUserDetails: User = User()
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)){
             // it gets the details from intent as a ParcelableExtra
-            userDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
+            mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
         // It displays the user name and email of the user profile, from the db,
         // But it still has some bugs, once it displays the user details, going to the main activity
         // and coming back, the details disappear
-        findViewById<TextView>(R.id.user_profile_name).text = userDetails.firstName //4:50
-        findViewById<TextView>(R.id.user_profile_email).text = userDetails.email
-        findViewById<TextView>(R.id.user_profile_number).text = userDetails.phone
+        findViewById<TextView>(R.id.user_profile_Fname).text = mUserDetails?.firstName  //USER NAME
+        findViewById<TextView>(R.id.user_profile_mobile).text = mUserDetails?.phone  //USER PHONE ? .toString()
+        findViewById<TextView>(R.id.user_profile_email).text = mUserDetails?.email      //USER EMAIL
+
 
         val backBtn = findViewById<ImageView>(R.id.toolbar_icon_user_profile)
         backBtn.setOnClickListener {
@@ -56,13 +58,15 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         if (currentUser != null) {
 
             // it allows the user to click in their photo
-            user_img.setOnClickListener(this@UserProfileActivity)
+            val userImg = findViewById<ImageView>(R.id.profile_image)
+            userImg.setOnClickListener(this@UserProfileActivity)
 
             btnLogOut.setOnClickListener {
                 logInOrLogOut()
             }
         } else {
-            user_img.isEnabled = false
+            val userImg = findViewById<ImageView>(R.id.profile_image)
+            userImg.isEnabled = false
             btnLogOut.isEnabled = false
             btnLogOut.setBackgroundColor(ContextCompat.getColor(btnLogOut.context,R.color.disableBtn))
         }
@@ -71,6 +75,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
     // this function logs out the user
     fun logInOrLogOut(){
 
+//        showProgressDialog()
+
         firebaseAuth.signOut()
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -78,21 +84,22 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         Toast.makeText(this,"You are logged out!", Toast.LENGTH_LONG).show()
     }
 
-    // Method implemented cuz im using View.OnClickListener
+    // Method implemented because im using View.OnClickListener
     // Function that gets the user picture on the gallery
     override fun onClick(view: View?) {
         if (view != null){
             when (view.id) {
 
-                R.id.user_img -> {
+                R.id.profile_image -> {
 
                     // If user already gave permission
-                    if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    if(checkSelfPermission(this, permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
 //                        Toast.makeText(this, "You already have storage permission", Toast.LENGTH_LONG).show()
                         Constants.showImageChooser(this)
                     } else {
                         //
-                        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),Constants.READ_STORAGE_PERMISSION_CODE)
+                        ActivityCompat.requestPermissions(this, arrayOf(permission.READ_EXTERNAL_STORAGE),
+                            Constants.READ_STORAGE_PERMISSION_CODE)
                     }
                 }
             }
@@ -107,8 +114,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-//            Toast.makeText(this, "Store permission granted!", Toast.LENGTH_LONG).show()
             Constants.showImageChooser(this)
+//            Toast.makeText(this, "Image added", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(this, "PERMISSION DENIED! You can also allow it on Settings.", Toast.LENGTH_LONG).show()
         }
@@ -122,7 +129,10 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                 if (data !== null){
                     try {
                         val selectedImageFileUri = data.data!!
-                        user_img.setImageURI(selectedImageFileUri)
+
+                        val userImg = findViewById<ImageView>(R.id.profile_image)
+//                      userImg.setImageURI((Uri.parse(selectedImageFileUri.toString())))
+                        GlideLoader(this).loadUserPicture(selectedImageFileUri, userImg)
                     } catch (e: IOException){
                         e.printStackTrace()
                         Toast.makeText(this, "Ops, image selected failed!", Toast.LENGTH_LONG).show()

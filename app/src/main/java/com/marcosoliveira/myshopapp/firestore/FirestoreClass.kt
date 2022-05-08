@@ -22,7 +22,7 @@ class FirestoreClass {
 
     // This function register an user, from the RegisterActivity
     fun registerUser(activity: RegisterActivity, userInfo: User){
-        mFirestore.collection(Constants.USER)
+        mFirestore.collection(Constants.USERS)
             .document(userInfo.id)                  // It gets the id from "User" activity
             .set(userInfo, SetOptions.merge())      // It merges the both information
             .addOnFailureListener {
@@ -52,7 +52,7 @@ class FirestoreClass {
     fun getUserDetails(activity: Activity){
 
         // Passing the collection name with the data we want
-        mFirestore.collection(Constants.USER)
+        mFirestore.collection(Constants.USERS)
 
             // The document if to get the fields of an user
             .document(getCurrentUserID())
@@ -64,11 +64,15 @@ class FirestoreClass {
                 val user = document.toObject(User::class.java)!!
 
                 // to retrieve data from firebase and share between MainActivity, UserProfileActivity
-                val sharedPreferences = activity.getSharedPreferences(Constants.MYSHOPAPP_PREFERENCES, Context.MODE_PRIVATE)
+                val sharedPreferences = activity.getSharedPreferences(
+                    Constants.MYSHOPAPP_PREFERENCES,
+                    Context.MODE_PRIVATE
+                )
+
                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
                 editor.putString(
                         Constants.LOGGED_IN_USERNAME,
-                        "${user.firstName} ${user.email} ${user.phone}"
+                        "${user.firstName} ${user.phone} ${user.email}"
                 )
                 editor.apply()//4:28
 
@@ -92,6 +96,13 @@ class FirestoreClass {
                 )
             }
     }
+
+    // UPDATE USER PROFILE?
+    // use HashMap for display user details?
+//    fun displayUserDetails(user: User){
+//
+//    }
+
 }
 
 
