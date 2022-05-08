@@ -39,6 +39,17 @@
 - [x] If logged in, attach authentication token to all requests until logout
 - [x] Add a small "About this app" button in the profile page, that shows a page with your copyright details and credits.
 
+## Screenshots:
+[![1-Splashscreen.png](https://i.postimg.cc/NGX93fpG/1-Splashscreen.png)](https://postimg.cc/grY2RpC1)
+[![2-Shop.png](https://i.postimg.cc/xCz8VtGp/2-Shop.png)](https://postimg.cc/FdhNjbB0)
+[![3-Cart.png](https://i.postimg.cc/fbkkBwVN/3-Cart.png)](https://postimg.cc/yJ4VNChQ)
+[![4-Delivery.png](https://i.postimg.cc/8C3cYqvr/4-Delivery.png)](https://postimg.cc/bGxqDV3z)
+[![5-msg.png](https://i.postimg.cc/xTSJnD4v/5-msg.png)](https://postimg.cc/V5DLWT1v)
+[![6-Login.png](https://i.postimg.cc/m2NcrXv0/6-Login.png)](https://postimg.cc/gnjcSDkD)
+[![7-Forgot-Password.png](https://i.postimg.cc/kgTBQVXs/7-Forgot-Password.png)](https://postimg.cc/qNCJ0vK6)
+[![8-Create-Account.png](https://i.postimg.cc/8zp7fdDs/8-Create-Account.png)](https://postimg.cc/ykG1wZDz)
+[![9-user-profile.png](https://i.postimg.cc/MHxvq1p7/9-user-profile.png)](https://postimg.cc/LYCHVYf5)
+
 ## JSON API Links:
 - Root URL: https://fakestoreapi.com
 - User Signup: POST /users
