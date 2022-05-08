@@ -72,7 +72,7 @@ class FirestoreClass {
                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
                 editor.putString(
                         Constants.LOGGED_IN_USERNAME,
-                        "${user.firstName} ${user.lastName} ${user.email}"
+                        "${user.firstName} ${user.phone} ${user.email}"
                 )
                 editor.apply()//4:28
 
@@ -96,6 +96,13 @@ class FirestoreClass {
                 )
             }
     }
+
+    // UPDATE USER PROFILE?
+    // use HashMap for display user details?
+//    fun displayUserDetails(user: User){
+//
+//    }
+
 }
 
 

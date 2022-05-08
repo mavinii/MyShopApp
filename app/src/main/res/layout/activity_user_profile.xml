@@ -79,7 +79,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/user_profile_Lemail"
+            android:id="@+id/user_profile_mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"

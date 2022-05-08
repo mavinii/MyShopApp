@@ -42,9 +42,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         // It displays the user name and email of the user profile, from the db,
         // But it still has some bugs, once it displays the user details, going to the main activity
         // and coming back, the details disappear
-//        findViewById<TextView>(R.id.user_profile_Fname).isEnabled = false
         findViewById<TextView>(R.id.user_profile_Fname).text = mUserDetails?.firstName  //USER NAME
-        findViewById<TextView>(R.id.user_profile_Lemail).text = mUserDetails?.lastName  //USER PHONE ? .toString()
+        findViewById<TextView>(R.id.user_profile_mobile).text = mUserDetails?.phone  //USER PHONE ? .toString()
         findViewById<TextView>(R.id.user_profile_email).text = mUserDetails?.email      //USER EMAIL
 
 

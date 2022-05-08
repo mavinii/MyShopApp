@@ -22,7 +22,7 @@ import com.google.firebase.ktx.Firebase
 import com.marcosoliveira.myshopapp.R
 import com.marcosoliveira.myshopapp.models.User
 
-class   DeliveryActivity : AppCompatActivity() {
+open class DeliveryActivity : AppCompatActivity() {
 
     lateinit var user: User
     lateinit var auth: FirebaseAuth
@@ -124,23 +124,28 @@ class   DeliveryActivity : AppCompatActivity() {
             )
             val currentUser = FirebaseAuth.getInstance().currentUser
             if (currentUser != null) {
-                db.collection("user").document(currentUser.uid)
+                db.collection("users").document(currentUser.uid)
                     .set(data, SetOptions.merge())
             }
 
-            // Notification after all inputs have been filled in
-            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notification_icon)
-                .setContentTitle("Payment confirmation.")
-                .setContentText("Please check user profile for more.")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .build()
-
-            val notificationManager = NotificationManagerCompat.from(this)
-            notificationManager.notify(NOTIFICATION_ID, notification)
-
+            sendMessageOrderCompleted()
             orderCompletedWithSuccess()
         }
+    }
+
+    fun sendMessageOrderCompleted(){
+
+        // Notification after all inputs have been filled in
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_notification_icon)
+            .setContentTitle("Payment confirmation.")
+            .setContentText("Thanks for buying with us.")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .build()
+
+        val notificationManager = NotificationManagerCompat.from(this)
+        notificationManager.notify(NOTIFICATION_ID, notification)
+
     }
 
     // Order completed
@@ -148,11 +153,13 @@ class   DeliveryActivity : AppCompatActivity() {
 
         // TODO Send the user their profile after payment
         // TODO using the intent, try to display user product bought in the profile activity
-        val intent = Intent(this@DeliveryActivity, MainActivity::class.java)
+        val intent = Intent(this@DeliveryActivity, UserProfileActivity::class.java)
         startActivity(intent)
 
         // It takes the user to the login page and close the register screen
         finish()
     }
+
+
 
 }
